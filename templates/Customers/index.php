@@ -18,45 +18,26 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Neymar Junior</td>
-                    <td><small>Rua El Greco, Goiânia - GO</small></td>
-                    <td><a href="#">
-                            Neymar@Junior.com
-                        </a>
-                    </td>
-                    <td>
-                        <div class="btn-group">
-                            <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'view']); ?>" class="btn btn-default"><i class="fas fa-eye"></i></a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Sophie Caroline Cardoso</td>
-                    <td><small>Rua Pau Brasil, São Luís - MA</small></td>
-                    <td><a href="#">
-                            Sophie@Cardoso.com
-                        </a>
-                    </td>
-                    <td>
-                        <div class="btn-group">
-                            <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'view']); ?>" class="btn btn-default"><i class="fas fa-eye"></i></a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Fátima Esther Agatha Carvalho</td>
-                    <td><small>Rua Temístocles Henrique Tribueiro, Boa Vista - RR</small></td>
-                    <td><a href="#">
-                            Fátima@Carvalho.com
-                        </a>
-                    </td>
-                    <td>
-                        <div class="btn-group">
-                            <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'view']); ?>" class="btn btn-default"><i class="fas fa-eye"></i></a>
-                        </div>
-                    </td>
-                </tr>
+
+                <?php
+                foreach ($customer as $el) {
+                ?>
+                    <tr>
+                        <td><?= strtoupper($el->name) ?></td>
+                        <td><small><?= strtoupper($el->place); ?> , <?= strtoupper($el->city) ?> - <?= strtoupper($el->uf) ?></small></td>
+                        <td><a href="mailto:<?= $el->email ?>">
+                                <?= $el->email ?>
+                            </a>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'view', $el->id]); ?>" class="btn btn-default"><i class="fas fa-eye"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                <?php
+                } ?>
+
             </tbody>
         </table>
     </div>

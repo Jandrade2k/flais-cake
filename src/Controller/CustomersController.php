@@ -15,9 +15,14 @@ class CustomersController extends AppController
 
     public function index()
     {
-        $var = 'Salve';
+        $this->loadModel('Customers');
+        // $customer = $this->Customers->get($id)
+        // $customer = $this->Customers->find('all');
+        $customer = $this->Customers->find()
+                                    ->where(['status' => 1])
+                                    ->toArray();
 
-        $this->set(compact('var'));
+        $this->set(compact('customer'));
     }
 
     public function add()
@@ -27,11 +32,14 @@ class CustomersController extends AppController
         $this->set(compact('var'));
     }
 
-    public function view()
+    public function view($id)
     {
-        $var = 'Salve';
+        $this->loadModel('Customer');
 
-        $this->set(compact('var'));
+        $customer = $this->Customers->find()
+                                    ->where(['id'=> $id])
+                                    ->first();
+        $this->set(compact('customer'));
     }
 
     public function edit(){
