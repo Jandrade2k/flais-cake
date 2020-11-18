@@ -21,7 +21,13 @@
           <li class="nav-item">
             <a href="<?= $this->Url->build(['controller'=>'users', 'action' => 'index']); ?>" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
-              <p>Usuário</p>
+              <p>Usuários</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= $this->Url->build(['controller'=>'customers', 'action' => 'index']); ?>" class="nav-link">
+              <i class="nav-icon fas fa-hand-holding"></i>
+              <p>Clientes</p>
             </a>
           </li>
         </ul>

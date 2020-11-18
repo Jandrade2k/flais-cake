@@ -22,7 +22,7 @@
         <!-- /.card-body -->
 
         <div class="card-footer">
-            <a href="<?= $this->Url->build(['controller'=>'users', 'action' =>'index']); ?>" class="btn btn-info">Editar</a>
+            <a href="<?= $this->Url->build(['controller'=>'users', 'action' =>'index']); ?>" class="btn btn-success">Salvar</a>
             <a href="<?= $this->Url->build(['controller'=> 'users', 'action'=>'delete']); ?>" class="btn btn-danger">Excluir</a>
         </div>
     </form>
