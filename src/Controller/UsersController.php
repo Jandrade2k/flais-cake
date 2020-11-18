@@ -23,7 +23,26 @@ class UsersController extends AppController
     public function add()
     {
         $var = 'Salve';
-        
+
+        $this->set(compact('var'));
+    }
+
+    public function view()
+    {
+        $var = 'Salve';
+
+        $this->set(compact('var'));
+    }
+
+    public function edit(){
+        $var = 'Salve';
+
+        $this->set(compact('var'));
+    }
+
+    public function delete(){
+        $var = 'Salve';
+
         $this->set(compact('var'));
     }
 }
