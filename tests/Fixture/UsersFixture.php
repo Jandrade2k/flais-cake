@@ -24,7 +24,7 @@ class UsersFixture extends TestFixture
         'unit' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'armscii8_general_ci', 'comment' => '', 'precision' => null],
         'created_at' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => null, 'comment' => ''],
         'updated_at' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => null, 'comment' => ''],
-        'statud' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'status' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -48,9 +48,9 @@ class UsersFixture extends TestFixture
                 'password' => 'Lorem ipsum dolor sit amet',
                 'name' => 'Lorem ipsum dolor sit amet',
                 'unit' => 'Lorem ipsum dolor sit amet',
-                'created_at' => '2020-11-19 14:43:14',
-                'updated_at' => '2020-11-19 14:43:14',
-                'statud' => 1,
+                'created_at' => '2020-11-19 18:22:17',
+                'updated_at' => '2020-11-19 18:22:17',
+                'status' => 1,
             ],
         ];
         parent::init();

@@ -30,6 +30,12 @@
               <p>Clientes</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?= $this->Url->build(['controller'=>'events', 'action' => 'index']); ?>" class="nav-link">
+              <i class="nav-icon fas fa-calendar-check"></i>
+              <p>Eventos</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -52,8 +52,7 @@
 
     <div class="card-footer">
         <button type="submit" class="btn btn-success">Salvar</button>
-        <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'index']); ?>" class="btn btn-danger">Cancelar</a>
-        <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'delete', $customer->id]); ?>" class="btn btn-danger">Excluir</a>
+        <a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'index']); ?>" class="btn btn-danger">Cancelar</a>
     </div>
     <?= $this->Form->end(); ?>
 </div>

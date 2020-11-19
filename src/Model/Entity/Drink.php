@@ -17,7 +17,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $updated_at
  *
- * @property \App\Model\Entity\Tipo $tipo
+ * @property \App\Model\Entity\EventsTipo $events_tipo
  * @property \App\Model\Entity\Recipe $recipe
  */
 class Drink extends Entity
@@ -39,7 +39,7 @@ class Drink extends Entity
         'status' => true,
         'created_at' => true,
         'updated_at' => true,
-        'tipo' => true,
+        'events_tipo' => true,
         'recipe' => true,
     ];
 }

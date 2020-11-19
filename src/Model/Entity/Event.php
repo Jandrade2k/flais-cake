@@ -30,8 +30,8 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $updated_at
  *
- * @property \App\Model\Entity\Tipo $tipo
- * @property \App\Model\Entity\Porposal $porposal
+ * @property \App\Model\Entity\EventsTipo $events_tipo
+ * @property \App\Model\Entity\Proposal $proposal
  * @property \App\Model\Entity\Customer $customer
  */
 class Event extends Entity
@@ -66,8 +66,8 @@ class Event extends Entity
         'status' => true,
         'created_at' => true,
         'updated_at' => true,
-        'tipo' => true,
-        'porposal' => true,
+        'events_tipo' => true,
+        'proposal' => true,
         'customer' => true,
     ];
 }

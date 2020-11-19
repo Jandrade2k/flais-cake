@@ -43,8 +43,8 @@ class EventsTiposFixture extends TestFixture
                 'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
                 'status' => 1,
-                'created_at' => '2020-11-19 14:43:14',
-                'updated_at' => '2020-11-19 14:43:14',
+                'created_at' => '2020-11-19 18:22:16',
+                'updated_at' => '2020-11-19 18:22:16',
             ],
         ];
         parent::init();

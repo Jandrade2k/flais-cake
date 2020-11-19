@@ -88,9 +88,9 @@ class UsersTable extends Table
             ->notEmptyDateTime('updated_at');
 
         $validator
-            ->integer('statud')
-            ->requirePresence('statud', 'create')
-            ->notEmptyString('statud');
+            ->integer('status')
+            ->requirePresence('status', 'create')
+            ->notEmptyString('status');
 
         return $validator;
     }

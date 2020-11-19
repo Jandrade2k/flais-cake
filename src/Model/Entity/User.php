@@ -15,7 +15,7 @@ use Cake\ORM\Entity;
  * @property string $unit
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $updated_at
- * @property int $statud
+ * @property int $status
  */
 class User extends Entity
 {
@@ -35,7 +35,7 @@ class User extends Entity
         'unit' => true,
         'created_at' => true,
         'updated_at' => true,
-        'statud' => true,
+        'status' => true,
     ];
 
     /**

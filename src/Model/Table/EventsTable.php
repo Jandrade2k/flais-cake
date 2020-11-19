@@ -11,6 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Events Model
  *
+ * @property \App\Model\Table\EventsTiposTable&\Cake\ORM\Association\BelongsTo $EventsTipos
+ * @property \App\Model\Table\ProposalTable&\Cake\ORM\Association\BelongsTo $Proposal
  * @property \App\Model\Table\CustomersTable&\Cake\ORM\Association\BelongsTo $Customers
  *
  * @method \App\Model\Entity\Event newEmptyEntity()
