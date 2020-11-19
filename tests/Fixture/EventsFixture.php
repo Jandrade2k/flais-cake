@@ -17,10 +17,10 @@ class EventsFixture extends TestFixture
      */
     // phpcs:disable
     public $fields = [
-        'id' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
+        'id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
-        'tipo_id' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
-        'porposal_id' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
+        'tipo_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'porposal_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'event_date' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'portion_date' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'qtd_guests' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
@@ -34,20 +34,20 @@ class EventsFixture extends TestFixture
         'creation_expense' => ['type' => 'decimal', 'length' => 8, 'precision' => 2, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => ''],
         'payment_method' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
         'qtd_bar' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'customer_id' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
+        'customer_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'status' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'created_at' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => null, 'comment' => ''],
         'updated_at' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => null, 'comment' => ''],
         '_indexes' => [
-            'tipo' => ['type' => 'index', 'columns' => ['tipo_id'], 'length' => []],
-            'porposal' => ['type' => 'index', 'columns' => ['porposal_id'], 'length' => []],
+            'tipo_id' => ['type' => 'index', 'columns' => ['tipo_id'], 'length' => []],
+            'proposal' => ['type' => 'index', 'columns' => ['porposal_id'], 'length' => []],
             'customer' => ['type' => 'index', 'columns' => ['customer_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'porposal' => ['type' => 'foreign', 'columns' => ['porposal_id'], 'references' => ['proposal', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'tipo_id' => ['type' => 'foreign', 'columns' => ['tipo_id'], 'references' => ['events_tipos', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'proposal' => ['type' => 'foreign', 'columns' => ['porposal_id'], 'references' => ['proposal', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
             'customer' => ['type' => 'foreign', 'columns' => ['customer_id'], 'references' => ['customers', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
-            'tipo' => ['type' => 'foreign', 'columns' => ['tipo_id'], 'references' => ['events_tipos', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -64,12 +64,12 @@ class EventsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '7c7469e6-f534-4689-ba2f-8b479ce20a94',
+                'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
-                'tipo_id' => 'Lorem ipsum dolor sit amet',
-                'porposal_id' => 'Lorem ipsum dolor sit amet',
-                'event_date' => '2020-11-18',
-                'portion_date' => '2020-11-18',
+                'tipo_id' => 1,
+                'porposal_id' => 1,
+                'event_date' => '2020-11-19',
+                'portion_date' => '2020-11-19',
                 'qtd_guests' => 1,
                 'hours' => 1,
                 'price_van' => 1.5,
@@ -81,10 +81,10 @@ class EventsFixture extends TestFixture
                 'creation_expense' => 1.5,
                 'payment_method' => 'Lorem ipsum dolor sit amet',
                 'qtd_bar' => 1,
-                'customer_id' => 'Lorem ipsum dolor sit amet',
+                'customer_id' => 1,
                 'status' => 1,
-                'created_at' => '2020-11-18 14:42:13',
-                'updated_at' => '2020-11-18 14:42:13',
+                'created_at' => '2020-11-19 14:43:14',
+                'updated_at' => '2020-11-19 14:43:14',
             ],
         ];
         parent::init();

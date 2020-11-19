@@ -57,8 +57,7 @@ class CustomersTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('id')
-            ->maxLength('id', 255)
+            ->integer('id')
             ->allowEmptyString('id', null, 'create');
 
         $validator
@@ -100,8 +99,7 @@ class CustomersTable extends Table
         $validator
             ->scalar('complement')
             ->maxLength('complement', 255)
-            ->requirePresence('complement', 'create')
-            ->notEmptyString('complement');
+            ->allowEmptyString('complement');
 
         $validator
             ->scalar('city')
@@ -122,18 +120,15 @@ class CustomersTable extends Table
 
         $validator
             ->integer('status')
-            ->requirePresence('status', 'create')
-            ->notEmptyString('status');
+            ->allowEmptyString('status');
 
         $validator
             ->dateTime('created_at')
-            ->requirePresence('created_at', 'create')
-            ->notEmptyDateTime('created_at');
+            ->allowEmptyDateTime('created_at');
 
         $validator
             ->dateTime('updated_at')
-            ->requirePresence('updated_at', 'create')
-            ->notEmptyDateTime('updated_at');
+            ->allowEmptyDateTime('updated_at');
 
         return $validator;
     }

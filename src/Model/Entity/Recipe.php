@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
 /**
  * Recipe Entity
  *
- * @property string $id
+ * @property int $id
  * @property string $preparation_mode
  * @property string $ingredient_id
  * @property string $qtd_d

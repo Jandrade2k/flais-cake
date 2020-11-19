@@ -11,8 +11,6 @@ use Cake\Validation\Validator;
 /**
  * Events Model
  *
- * @property \App\Model\Table\EventsTiposTable&\Cake\ORM\Association\BelongsTo $EventsTipos
- * @property \App\Model\Table\ProposalTable&\Cake\ORM\Association\BelongsTo $Proposal
  * @property \App\Model\Table\CustomersTable&\Cake\ORM\Association\BelongsTo $Customers
  *
  * @method \App\Model\Entity\Event newEmptyEntity()
@@ -68,8 +66,7 @@ class EventsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('id')
-            ->maxLength('id', 255)
+            ->integer('id')
             ->allowEmptyString('id', null, 'create');
 
         $validator

@@ -8,16 +8,16 @@ use Cake\ORM\Entity;
 /**
  * Drink Entity
  *
- * @property string $id
+ * @property int $id
  * @property string $name
- * @property string $tipo_id
- * @property string $recipe_id
+ * @property int $tipo_id
+ * @property int $recipe_id
  * @property string|null $image
  * @property int $status
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $updated_at
  *
- * @property \App\Model\Entity\EventsTipo $events_tipo
+ * @property \App\Model\Entity\Tipo $tipo
  * @property \App\Model\Entity\Recipe $recipe
  */
 class Drink extends Entity
@@ -39,7 +39,7 @@ class Drink extends Entity
         'status' => true,
         'created_at' => true,
         'updated_at' => true,
-        'events_tipo' => true,
+        'tipo' => true,
         'recipe' => true,
     ];
 }

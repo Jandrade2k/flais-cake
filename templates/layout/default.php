@@ -70,6 +70,33 @@ to get the desired effect
     <script src="<?= $this->request->getAttribute('webroot'); ?>plugins/chart.js/Chart.min.js"></script>
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/demo.js"></script>
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/pages/dashboard3.js"></script>
+    <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/jquery.mask.js"></script>
+    <script>
+        $('.cep').change(function() {
+            cep = $('.cep').val();
+            console.log('change', cep)
+            $.ajax({
+                    url: "https://viacep.com.br/ws/" + cep + "/json/",
+                    type: 'get'
+                })
+                .done(function(data) {
+                    console.log('zcode working', data)
+                    $('#com_logradouro, #imo_logradouro, #con_logradouro, #imo_logradouro, #cli_logradouro').val(data.logradouro);
+                    $('#com_bairro, #imo_bairro, #con_bairro, #cli_bairro').val(data.bairro);
+                    $('#com_cidade, #imo_cidade, #con_cidade, #cli_cidade').val(data.localidade);
+                    $('#com_estado, #imo_estado, #con_estado, #cli_estado').val(data.uf);
+                    // $("#resultado").html(msg);
+                    if (data.logradouro) {
+                        $("#com_numero").focus()
+                    }
+                })
+                .fail(function(jqXHR, textStatus, data) {
+                    console.log(data);
+                    console.log(textStatus);
+                    console.log(jqXHR);
+                });
+        });
+    </script>
 </body>
 
 </html>

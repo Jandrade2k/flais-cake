@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
 /**
  * Ingedient Entity
  *
- * @property string $id
+ * @property int $id
  * @property string $name
  * @property string $type
  * @property int $status

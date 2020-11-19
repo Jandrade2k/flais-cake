@@ -8,7 +8,7 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputName1">Nome</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome" value="<?= strtoupper($customer->name) ?>" disabled>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome" value="<?= $customer->name ?>" disabled>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">E-mail</label>
@@ -16,35 +16,35 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Telefone</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Telefone" value="<?= strtoupper($customer->phone) ?>" disabled>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Telefone" value="<?= $customer->phone ?>" disabled>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Contato</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Contato" value="<?= strtoupper($customer->contact) ?>" disabled>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Contato" value="<?= $customer->contact ?>" disabled>
             </div>
             <div class="form-group">
                 <label for="exampleInputUnit1">CEP</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="CEP" value="<?= strtoupper($customer->cep) ?>" disabled>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="CEP" value="<?= $customer->cep ?>" disabled>
             </div>
             <div class="form-group">
                 <label for="exampleInputUnit1">Logradouro</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Logradouro" value="<?= strtoupper($customer->place) ?>" disabled>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Logradouro" value="<?= $customer->place ?>" disabled>
             </div>
             <div class="form-group">
                 <label for="exampleInputUnit1">Numero</label>
-                <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Numero" value="<?= strtoupper($customer->number) ?>" disabled>
+                <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Numero" value="<?= $customer->number ?>" disabled>
             </div>
             <div class="form-group">
                 <label for="exampleInputUnit1">Complemento</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Complemento" value="<?= strtoupper($customer->complement) ?>" disabled>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Complemento" value="<?= $customer->complement ?>" disabled>
             </div>
             <div class="form-group">
                 <label for="exampleInputUnit1">Cidade</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Cidade" value="<?= strtoupper($customer->city) ?>" disabled>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Cidade" value="<?= $customer->city ?>" disabled>
             </div>
             <div class="form-group">
                 <label for="exampleInputUnit1">UF</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="UF" value="<?= strtoupper($customer->uf) ?>" disabled>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="UF" value="<?= $customer->uf ?>" disabled>
             </div>
 
         </div>

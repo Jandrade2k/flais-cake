@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
 /**
  * EventsTipo Entity
  *
- * @property string $id
+ * @property int $id
  * @property string $name
  * @property int $status
  * @property \Cake\I18n\FrozenTime|null $created_at

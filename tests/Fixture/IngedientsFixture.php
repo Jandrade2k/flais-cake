@@ -17,7 +17,7 @@ class IngedientsFixture extends TestFixture
      */
     // phpcs:disable
     public $fields = [
-        'id' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
+        'id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
         'type' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
         'status' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
@@ -41,12 +41,12 @@ class IngedientsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '31357286-44cd-4f3f-9b2f-cf94d557dfaa',
+                'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
                 'type' => 'Lorem ipsum dolor sit amet',
                 'status' => 1,
-                'created_at' => '2020-11-18 14:42:13',
-                'updated_at' => '2020-11-18 14:42:13',
+                'created_at' => '2020-11-19 14:43:14',
+                'updated_at' => '2020-11-19 14:43:14',
             ],
         ];
         parent::init();

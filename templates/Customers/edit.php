@@ -1,58 +1,59 @@
 <div class="card card-secondary" style="margin:20px;">
     <div class="card-header">
-        <h3 class="card-title">Neymar Juior</h3>
+        <h3 class="card-title">Novo Cliente</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form role="form">
-        <div class="card-body">
+    <?= $this->Form->create(null, ['role' => 'form', 'id' => 'troxa']); ?>
+    <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputName1">Nome</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome" value="Neymar Juior">
+                <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome" value="<?= $customer->name ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">E-mail</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail" value="Neymar@Junior.com">
+                <input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail" value="<?= $customer->email; ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Telefone</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Telefone" value="(15) 99999-9999">
+                <input name="phone" type="text" class="form-control" id="exampleInputEmail1" placeholder="Telefone" value="<?= $customer->phone ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Contato</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Contato" value="Neymar">
+                <input name="contact" type="text" class="form-control" id="exampleInputEmail1" placeholder="Contato" value="<?= $customer->contact ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputUnit1">CEP</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="CEP" value="74574-009">
+                <input name="cep" type="text" class="form-control" id="exampleInputPassword1" placeholder="CEP" value="<?= $customer->cep ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputUnit1">Logradouro</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Logradouro" value="Rua El Greco">
+                <input name="place" type="text" class="form-control" id="exampleInputPassword1" placeholder="Logradouro" value="<?= $customer->place ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputUnit1">Numero</label>
-                <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Numero" value="123">
+                <input name="number" type="number" class="form-control" id="exampleInputPassword1" placeholder="Numero" value="<?= $customer->number ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputUnit1">Complemento</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Complemento" value="bl 1 ap 12">
+                <input name="complement" type="text" class="form-control" id="exampleInputPassword1" placeholder="Complemento" value="<?= $customer->complement ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputUnit1">Cidade</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Cidade" value="Goiânia">
+                <input name="city" type="text" class="form-control" id="exampleInputPassword1" placeholder="Cidade" value="<?= $customer->city ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputUnit1">UF</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="UF" value="GO">
+                <input name="uf" type="text" class="form-control" id="exampleInputPassword1" placeholder="UF" value="<?= $customer->uf ?>">
             </div>
 
         </div>
-        <!-- /.card-body -->
+    <!-- /.card-body -->
 
-        <div class="card-footer">
-            <a href="<?= $this->Url->build(['controller'=>'customers', 'action' =>'index']); ?>" class="btn btn-success">Salvar</a>
-            <a href="<?= $this->Url->build(['controller'=> 'customers', 'action'=>'delete']); ?>" class="btn btn-danger">Excluir</a>
-        </div>
-    </form>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'index']); ?>" class="btn btn-danger">Cancelar</a>
+        <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'delete', $customer->id]); ?>" class="btn btn-danger">Excluir</a>
+    </div>
+    <?= $this->Form->end(); ?>
 </div>

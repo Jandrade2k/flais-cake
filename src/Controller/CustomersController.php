@@ -9,6 +9,8 @@ use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\ORM\TableRegistry;
+
 
 class CustomersController extends AppController
 {
@@ -19,38 +21,122 @@ class CustomersController extends AppController
         // $customer = $this->Customers->get($id)
         // $customer = $this->Customers->find('all');
         $customer = $this->Customers->find()
-                                    ->where(['status' => 1])
-                                    ->toArray();
+            ->where(['status' => 1])
+            ->toArray();
 
         $this->set(compact('customer'));
     }
 
     public function add()
     {
-        $var = 'Salve';
 
-        $this->set(compact('var'));
+        if ($this->request->is('post')) {
+            $customerTable = TableRegistry::getTableLocator()->get('Customers');
+            $customer = $customerTable->newEntity(
+                $this->request->getData()
+            );
+
+            $customer->status = 1;
+            $customer->created_at = date('Y-m-d H:i:s');
+            $customer->updated_at = date('Y-m-d H:i:s');
+
+            if ($customerTable->save($customer)) {
+                $this->Flash->success('Cliente salvo com sucesso.');
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error('Erro ao salvar cliente.');
+                return $this->redirect(['action' => 'add']);
+            }
+        }
     }
 
-    public function view($id)
+    public function view($id = null)
     {
+        if ($id == null) {
+            $this->redirect(['action' => 'index']);
+        }
+
         $this->loadModel('Customer');
 
         $customer = $this->Customers->find()
-                                    ->where(['id'=> $id])
-                                    ->first();
+            ->where(['id' => $id])
+            ->where(['status' => 1])
+            ->first();
+
+        if (!$customer) {
+            $this->Flash->error('Cliente não existe.');
+            return $this->redirect(['action' => 'index']);
+        }
         $this->set(compact('customer'));
     }
 
-    public function edit(){
-        $var = 'Salve';
+    public function edit($id = null)
+    {
+        if ($id == null) {
+            $this->redirect(['action' => 'index']);
+        }
 
-        $this->set(compact('var'));
+        $this->loadModel('Customer');
+
+        $customer = $this->Customers->find()
+            ->where(['id' => $id])
+            ->where(['status' => 1])
+            ->first();
+
+
+
+        if (!$customer) {
+            $this->Flash->error('Cliente não existe.');
+            return $this->redirect(['action' => 'index']);
+        }
+
+        if ($this->request->is('post')) {
+            $customerTable = TableRegistry::getTableLocator()->get('Customers');
+            $customer = $customerTable->get($id);
+            $customerTable->patchEntity(
+                $customer,
+                $this->request->getData()
+            );
+
+            $customer->updated_at = date('Y-m-d H:i:s');
+
+            // dd($customer);
+
+            if ($this->Customers->save($customer)) {
+                $this->Flash->success('Cliente atualizado com sucesso.');
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error('Erro ao atualizar cliente.');
+                return $this->redirect(['action' => 'edit', $id]);
+            }
+        }
+
+        $this->set(compact('customer'));
     }
 
-    public function delete(){
-        $var = 'Salve';
+    public function delete($id = null)
+    {
+        if ($id == null) {
+            $this->redirect(['action' => 'index']);
+        }
 
-        $this->set(compact('var'));
+        $customerTable = TableRegistry::getTableLocator()->get('Customers');
+        $customer = $customerTable->get($id);
+        $customerTable->patchEntity(
+            $customer,
+            $this->request->getData()
+        );
+
+        $customer->updated_at = date('Y-m-d H:i:s');
+        $customer->status = 0;
+
+
+        if ($this->Customers->save($customer)) {
+            $this->Flash->success('Cliente excluido com sucesso.');
+            return $this->redirect(['action' => 'index']);
+        } else {
+            $this->Flash->error('Erro ao excluir cliente.');
+            return $this->redirect(['action' => 'edit', $id]);
+        }
     }
 }

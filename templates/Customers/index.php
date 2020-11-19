@@ -4,7 +4,7 @@
         Adicionar
     </a>
 </div>
-
+<?= $this->Flash->render(); ?>
 <div class="card card-outline card-secondary" style="margin:20px;">
 
     <div class="card-body p-0">
@@ -18,23 +18,46 @@
                 </tr>
             </thead>
             <tbody>
-
                 <?php
                 foreach ($customer as $el) {
                 ?>
                     <tr>
-                        <td><?= strtoupper($el->name) ?></td>
-                        <td><small><?= strtoupper($el->place); ?> , <?= strtoupper($el->city) ?> - <?= strtoupper($el->uf) ?></small></td>
+                        <td><?= mb_strtoupper($el->name) ?></td>
+                        <td><small><?= mb_strtoupper($el->place); ?> , <?= mb_strtoupper($el->city) ?> - <?= mb_strtoupper($el->uf) ?></small></td>
                         <td><a href="mailto:<?= $el->email ?>">
                                 <?= $el->email ?>
                             </a>
                         </td>
                         <td>
                             <div class="btn-group">
-                                <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'view', $el->id]); ?>" class="btn btn-default"><i class="fas fa-eye"></i></a>
+                                <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'view', $el->id]); ?>" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'edit', $el->id]); ?>" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
+                                <button data-toggle="modal" data-target="#modal-danger_<?= $el->id; ?>" type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                             </div>
                         </td>
                     </tr>
+
+                    <div class="modal fade" id="modal-danger_<?= $el->id; ?>">
+                        <div class="modal-dialog">
+                            <div class="modal-content bg-danger">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">AVISO: Caso continuar o registro será excluido permanentemente.</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>O Cliente <?= $el->name ?> está prestes a ser excluido permanentemente.</p><br/>
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Cancelar</button>
+                                    <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'delete', $el->id]); ?>" class="btn btn-outline-light">Excluir mesmo assim</a>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
                 <?php
                 } ?>
 

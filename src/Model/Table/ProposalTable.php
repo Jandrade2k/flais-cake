@@ -51,8 +51,7 @@ class ProposalTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('id')
-            ->maxLength('id', 255)
+            ->integer('id')
             ->allowEmptyString('id', null, 'create');
 
         $validator

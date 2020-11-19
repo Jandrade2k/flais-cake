@@ -17,7 +17,7 @@ class UsersFixture extends TestFixture
      */
     // phpcs:disable
     public $fields = [
-        'id' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
+        'id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'email' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
         'password' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
         'name' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'armscii8_general_ci', 'comment' => '', 'precision' => null],
@@ -43,13 +43,13 @@ class UsersFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 'c636aa48-b26d-4346-a2ce-07764ed2b29f',
+                'id' => 1,
                 'email' => 'Lorem ipsum dolor sit amet',
                 'password' => 'Lorem ipsum dolor sit amet',
                 'name' => 'Lorem ipsum dolor sit amet',
                 'unit' => 'Lorem ipsum dolor sit amet',
-                'created_at' => '2020-11-18 14:42:13',
-                'updated_at' => '2020-11-18 14:42:13',
+                'created_at' => '2020-11-19 14:43:14',
+                'updated_at' => '2020-11-19 14:43:14',
                 'statud' => 1,
             ],
         ];

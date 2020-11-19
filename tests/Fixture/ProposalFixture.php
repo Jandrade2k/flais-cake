@@ -23,7 +23,7 @@ class ProposalFixture extends TestFixture
      */
     // phpcs:disable
     public $fields = [
-        'id' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
+        'id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
         'created_at' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => null, 'comment' => ''],
         'updated_at' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => null, 'comment' => ''],
@@ -46,10 +46,10 @@ class ProposalFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '6f9dab13-40a9-4de7-a474-0743dae13519',
+                'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
-                'created_at' => '2020-11-18 14:42:13',
-                'updated_at' => '2020-11-18 14:42:13',
+                'created_at' => '2020-11-19 14:43:14',
+                'updated_at' => '2020-11-19 14:43:14',
                 'status' => 1,
             ],
         ];

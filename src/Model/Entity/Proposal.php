@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
 /**
  * Proposal Entity
  *
- * @property string $id
+ * @property int $id
  * @property string $name
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $updated_at

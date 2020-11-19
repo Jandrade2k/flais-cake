@@ -8,10 +8,10 @@ use Cake\ORM\Entity;
 /**
  * Event Entity
  *
- * @property string $id
+ * @property int $id
  * @property string $name
- * @property string $tipo_id
- * @property string $porposal_id
+ * @property int $tipo_id
+ * @property int $porposal_id
  * @property \Cake\I18n\FrozenDate $event_date
  * @property \Cake\I18n\FrozenDate $portion_date
  * @property int $qtd_guests
@@ -25,13 +25,13 @@ use Cake\ORM\Entity;
  * @property string $creation_expense
  * @property string $payment_method
  * @property int $qtd_bar
- * @property string $customer_id
+ * @property int $customer_id
  * @property int $status
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $updated_at
  *
- * @property \App\Model\Entity\EventsTipo $events_tipo
- * @property \App\Model\Entity\Proposal $proposal
+ * @property \App\Model\Entity\Tipo $tipo
+ * @property \App\Model\Entity\Porposal $porposal
  * @property \App\Model\Entity\Customer $customer
  */
 class Event extends Entity
@@ -66,8 +66,8 @@ class Event extends Entity
         'status' => true,
         'created_at' => true,
         'updated_at' => true,
-        'events_tipo' => true,
-        'proposal' => true,
+        'tipo' => true,
+        'porposal' => true,
         'customer' => true,
     ];
 }

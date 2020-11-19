@@ -8,20 +8,20 @@ use Cake\ORM\Entity;
 /**
  * Customer Entity
  *
- * @property string $id
+ * @property int $id
  * @property string $name
  * @property string $phone
  * @property string $contact
  * @property string $cep
  * @property string $place
  * @property string $number
- * @property string $complement
+ * @property string|null $complement
  * @property string $city
  * @property string $uf
  * @property string $email
- * @property int $status
- * @property \Cake\I18n\FrozenTime $created_at
- * @property \Cake\I18n\FrozenTime $updated_at
+ * @property int|null $status
+ * @property \Cake\I18n\FrozenTime|null $created_at
+ * @property \Cake\I18n\FrozenTime|null $updated_at
  *
  * @property \App\Model\Entity\Event[] $events
  */
