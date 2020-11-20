@@ -52,8 +52,8 @@ class RecipesFixture extends TestFixture
                 'garrison' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
                 'qtd_g' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
                 'cup' => 'Lorem ipsum dolor sit amet',
-                'created_at' => '2020-11-19 18:22:17',
-                'updated_at' => '2020-11-19 18:22:17',
+                'created_at' => '2020-11-20 19:54:20',
+                'updated_at' => '2020-11-20 19:54:20',
                 'status' => 1,
             ],
         ];

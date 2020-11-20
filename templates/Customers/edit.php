@@ -1,3 +1,4 @@
+<?= $this->Flash->render(); ?>
 <div class="card card-secondary" style="margin:20px;">
     <div class="card-header">
         <h3 class="card-title">Novo Cliente</h3>

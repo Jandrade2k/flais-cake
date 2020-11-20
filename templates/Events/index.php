@@ -23,7 +23,7 @@
                 ?>
                     <tr>
                         <td><?= mb_strtoupper($el->name) ?></td>
-                        <td><small><?= mb_strtoupper($el->place); ?> , <?= mb_strtoupper($el->city) ?> - <?= mb_strtoupper($el->uf) ?></small></td>
+                        <td><?= mb_strtoupper($el->place); ?> , <?= mb_strtoupper($el->city) ?> - <?= mb_strtoupper($el->uf) ?></td>
                         <td><a href="mailto:<?= $el->event_date ?>">
                                 <?= $el->email ?>
                             </a>

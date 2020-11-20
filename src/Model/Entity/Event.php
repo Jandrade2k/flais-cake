@@ -12,8 +12,8 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property int $tipo_id
  * @property int $porposal_id
- * @property \Cake\I18n\FrozenDate $event_date
- * @property \Cake\I18n\FrozenDate $portion_date
+ * @property string $event_date
+ * @property string $portion_date
  * @property int $qtd_guests
  * @property int $hours
  * @property string $price_van

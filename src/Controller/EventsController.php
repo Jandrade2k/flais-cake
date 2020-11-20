@@ -18,12 +18,29 @@ class EventsController extends AppController
     {
         $this->loadModel('Events');
         // $event = $this->Events->get($id)
-        // $event = $this->Events->find('all');
+       // $event = $this->Events->find('all');
+       $this->loadModel('EventsTipos');
+        $tipo_eventos = $this->EventsTipos
+            ->find('all')
+            ->where(['status' => 1])
+            ->toArray();
+
+            $this->loadModel('Customers');
+            $customer = $this->Customers
+                ->find('all')
+                ->where(['status' => 1])
+                ->toArray();
+            
+            $this->loadModel('Proposal');
+            $tipo_proposal = $this->Proposal
+                ->find('all')
+                ->where(['status' => 1])
+                ->toArray();
         $event = $this->Events->find()
             ->where(['status' => 1])
             ->toArray();
 
-        $this->set(compact('event'));
+        $this->set(compact('event', 'tipo_proposal', 'customer', 'tipo_eventos'));
     }
 
     public function add()
@@ -33,6 +50,12 @@ class EventsController extends AppController
             ->find('all')
             ->where(['status' => 1])
             ->toArray();
+
+            $this->loadModel('Customers');
+            $customer = $this->Customers
+                ->find('all')
+                ->where(['status' => 1])
+                ->toArray();
             
             $this->loadModel('Proposal');
             $tipo_proposal = $this->Proposal
@@ -50,7 +73,10 @@ class EventsController extends AppController
             $event->created_at = date('Y-m-d H:i:s');
             $event->updated_at = date('Y-m-d H:i:s');
 
-            if ($eventTable->save($event)) {
+            
+            $rs = $eventTable->save($event);
+
+            if ($rs) {                
                 $this->Flash->success('Evento salvo com sucesso.');
                 return $this->redirect(['action' => 'index']);
             } else {
@@ -58,7 +84,7 @@ class EventsController extends AppController
                 return $this->redirect(['action' => 'add']);
             }
         }
-        $this->set(compact('tipo_eventos', 'tipo_proposal'));
+        $this->set(compact('tipo_eventos', 'tipo_proposal', 'customer'));
     }
 
     public function view($id = null)
@@ -88,6 +114,24 @@ class EventsController extends AppController
         }
 
         $this->loadModel('event');
+
+        $this->loadModel('EventsTipos');
+        $tipo_eventos = $this->EventsTipos
+            ->find('all')
+            ->where(['status' => 1])
+            ->toArray();
+
+            $this->loadModel('Customers');
+            $customer = $this->Customers
+                ->find('all')
+                ->where(['status' => 1])
+                ->toArray();
+            
+            $this->loadModel('Proposal');
+            $tipo_proposal = $this->Proposal
+                ->find('all')
+                ->where(['status' => 1])
+                ->toArray();
 
         $event = $this->Events->find()
             ->where(['id' => $id])
@@ -122,7 +166,7 @@ class EventsController extends AppController
             }
         }
 
-        $this->set(compact('event'));
+        $this->set(compact('event', 'tipo_eventos', 'customer', 'tipo_proposal'));
     }
 
     public function delete($id = null)

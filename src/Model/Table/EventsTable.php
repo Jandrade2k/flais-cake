@@ -78,14 +78,14 @@ class EventsTable extends Table
             ->notEmptyString('name');
 
         $validator
-            ->date('event_date')
-            ->requirePresence('event_date', 'create')
-            ->notEmptyDate('event_date');
+            ->scalar('event_date')
+            ->maxLength('event_date', 50)
+            ->notEmptyString('event_date');
 
         $validator
-            ->date('portion_date')
-            ->requirePresence('portion_date', 'create')
-            ->notEmptyDate('portion_date');
+            ->scalar('portion_date')
+            ->maxLength('portion_date', 50)
+            ->notEmptyString('portion_date');
 
         $validator
             ->integer('qtd_guests')
@@ -98,21 +98,23 @@ class EventsTable extends Table
             ->notEmptyString('hours');
 
         $validator
-            ->decimal('price_van')
-            ->requirePresence('price_van', 'create')
+            ->scalar('price_van')
+            ->maxLength('price_van', 50)
             ->notEmptyString('price_van');
 
         $validator
-            ->decimal('price_hotel')
+            ->scalar('price_hotel')
+            ->maxLength('price_hotel', 50)
             ->allowEmptyString('price_hotel');
 
         $validator
-            ->decimal('price_food')
+            ->scalar('price_food')
+            ->maxLength('price_food', 50)
             ->allowEmptyString('price_food');
 
         $validator
-            ->decimal('distance')
-            ->requirePresence('distance', 'create')
+            ->scalar('distance')
+            ->maxLength('distance', 50)
             ->notEmptyString('distance');
 
         $validator
@@ -126,8 +128,8 @@ class EventsTable extends Table
             ->notEmptyString('royalts');
 
         $validator
-            ->decimal('creation_expense')
-            ->requirePresence('creation_expense', 'create')
+            ->scalar('creation_expense')
+            ->maxLength('creation_expense', 50)
             ->notEmptyString('creation_expense');
 
         $validator

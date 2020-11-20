@@ -48,8 +48,8 @@ class ProposalFixture extends TestFixture
             [
                 'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
-                'created_at' => '2020-11-19 18:22:16',
-                'updated_at' => '2020-11-19 18:22:16',
+                'created_at' => '2020-11-20 19:54:20',
+                'updated_at' => '2020-11-20 19:54:20',
                 'status' => 1,
             ],
         ];

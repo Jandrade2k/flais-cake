@@ -45,8 +45,8 @@ class IngedientsFixture extends TestFixture
                 'name' => 'Lorem ipsum dolor sit amet',
                 'type' => 'Lorem ipsum dolor sit amet',
                 'status' => 1,
-                'created_at' => '2020-11-19 18:22:16',
-                'updated_at' => '2020-11-19 18:22:16',
+                'created_at' => '2020-11-20 19:54:20',
+                'updated_at' => '2020-11-20 19:54:20',
             ],
         ];
         parent::init();

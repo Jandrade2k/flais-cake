@@ -72,6 +72,8 @@ to get the desired effect
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/pages/dashboard3.js"></script>
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/jquery.mask.js"></script>
     <script>
+        $('.form_date').mask('00/00/00');
+        $('.din').mask('000.000.000.000.000,00', {reverse: true});
         $('.cep').change(function() {
             cep = $('.cep').val();
             console.log('change', cep)
