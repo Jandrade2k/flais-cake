@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
     <?= $this->element('components/set_title'); ?>
     <title><?= $this->fetch('title'); ?></title>
 
@@ -61,6 +63,7 @@ to get the desired effect
 
     <!-- jQuery -->
     <script src="<?= $this->request->getAttribute('webroot'); ?>plugins/jquery/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <!-- Bootstrap -->
     <script src="<?= $this->request->getAttribute('webroot'); ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE -->
@@ -72,8 +75,11 @@ to get the desired effect
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/pages/dashboard3.js"></script>
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/jquery.mask.js"></script>
     <script>
+        $('.select2').select2();
         $('.form_date').mask('00/00/00');
-        $('.din').mask('000.000.000.000.000,00', {reverse: true});
+        $('.din').mask('000.000.000.000.000,00', {
+            reverse: true
+        });
         $('.cep').change(function() {
             cep = $('.cep').val();
             console.log('change', cep)

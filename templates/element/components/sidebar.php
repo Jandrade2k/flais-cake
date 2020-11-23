@@ -36,6 +36,18 @@
               <p>Eventos</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?= $this->Url->build(['controller'=>'drinks', 'action' => 'index']); ?>" class="nav-link">
+              <i class="nav-icon fas fa-cocktail"></i>
+              <p>Drinks</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= $this->Url->build(['controller'=>'recipes', 'action' => 'index']); ?>" class="nav-link">
+              <i class="nav-icon fas fa-clipboard-list"></i>
+              <p>Receita</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

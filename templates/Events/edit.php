@@ -43,7 +43,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                 </div>
-                <input name="event_date" type="text" class="form-control" value="<?= $event->event_date ?>" placeholder="dd/mm/yy">
+                <input name="event_date" type="text" class="form-control form_date" placeholder="dd/mm/yy" value="<?= $event->event_date ?>">
             </div>
         </div>
         <div class="form-group">

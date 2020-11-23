@@ -95,6 +95,24 @@ class EventsController extends AppController
 
         $this->loadModel('event');
 
+        $this->loadModel('EventsTipos');
+        $tipo_eventos = $this->EventsTipos
+            ->find('all')
+            ->where(['status' => 1])
+            ->toArray();
+
+            $this->loadModel('Customers');
+            $customer = $this->Customers
+                ->find('all')
+                ->where(['status' => 1])
+                ->toArray();
+            
+            $this->loadModel('Proposal');
+            $tipo_proposal = $this->Proposal
+                ->find('all')
+                ->where(['status' => 1])
+                ->toArray();
+
         $event = $this->Events->find()
             ->where(['id' => $id])
             ->where(['status' => 1])
@@ -104,7 +122,7 @@ class EventsController extends AppController
             $this->Flash->error('Evento não existe.');
             return $this->redirect(['action' => 'index']);
         }
-        $this->set(compact('event'));
+        $this->set(compact('event', 'tipo_eventos', 'tipo_proposal', 'customer'));
     }
 
     public function edit($id = null)
