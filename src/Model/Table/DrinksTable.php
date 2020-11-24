@@ -12,7 +12,7 @@ use Cake\Validation\Validator;
  * Drinks Model
  *
  * @property \App\Model\Table\EventsTiposTable&\Cake\ORM\Association\BelongsTo $EventsTipos
- * @property \App\Model\Table\RecipesTable&\Cake\ORM\Association\BelongsTo $Recipes
+ * @property \App\Model\Table\RecipesTable&\Cake\ORM\Association\HasMany $Recipes
  *
  * @method \App\Model\Entity\Drink newEmptyEntity()
  * @method \App\Model\Entity\Drink newEntity(array $data, array $options = [])
@@ -48,9 +48,8 @@ class DrinksTable extends Table
             'foreignKey' => 'tipo_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('Recipes', [
-            'foreignKey' => 'recipe_id',
-            'joinType' => 'INNER',
+        $this->hasMany('Recipes', [
+            'foreignKey' => 'drink_id',
         ]);
     }
 
@@ -105,7 +104,6 @@ class DrinksTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['tipo_id'], 'EventsTipos'), ['errorField' => 'tipo_id']);
-        $rules->add($rules->existsIn(['recipe_id'], 'Recipes'), ['errorField' => 'recipe_id']);
 
         return $rules;
     }

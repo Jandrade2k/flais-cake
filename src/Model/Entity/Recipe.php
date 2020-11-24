@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $preparation_mode
- * @property string $ingredient_id
+ * @property string $ing
  * @property string $qtd_d
  * @property string|null $garrison
  * @property string|null $qtd_g
@@ -18,9 +18,9 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $updated_at
  * @property int $status
+ * @property int $drink_id
  *
- * @property \App\Model\Entity\Ingredient $ingredient
- * @property \App\Model\Entity\Drink[] $drinks
+ * @property \App\Model\Entity\Drink $drink
  */
 class Recipe extends Entity
 {
@@ -35,7 +35,7 @@ class Recipe extends Entity
      */
     protected $_accessible = [
         'preparation_mode' => true,
-        'ingredient_id' => true,
+        'ing' => true,
         'qtd_d' => true,
         'garrison' => true,
         'qtd_g' => true,
@@ -43,7 +43,7 @@ class Recipe extends Entity
         'created_at' => true,
         'updated_at' => true,
         'status' => true,
-        'ingredient' => true,
-        'drinks' => true,
+        'drink_id' => true,
+        'drink' => true,
     ];
 }

@@ -17,49 +17,69 @@ class RecipesController extends AppController
 
     public function index()
     {
-        $this->loadModel('Recipes');
-        // $recipe = $this->Recipes->get($id)
-        // $recipe = $this->Recipes->find('all');
-        $recipe = $this->Recipes->find()
-            ->where(['status' => 1])
-            ->toArray();
-
-        $this->set(compact('recipe'));
+       
     }
 
     public function add()
     {
+        // FIXME: Tratar para não cadastrar duas receitas pro mesmo drink.
+        // FIXME: Ajeitar o select2.
+        $this->loadModel('Ingredients');
+        $ing = $this->Ingredients->find()
+        ->where(['status' => 1])
+        ->where(['type' => 3])
+        ->toArray();
 
-        $this->loadModel('Ingedients');
-        $ing = $this->Ingedients->find()
+        $gua = $this->Ingredients->find()
+        ->where(['status' => 1])
+        ->where(['type' => 2])
+        ->toArray();
+
+        $cup = $this->Ingredients->find()
+        ->where(['status' => 1])
+        ->where(['type' => 1])
+        ->toArray();
+
+        $this->loadModel('Drinks');
+        $drk = $this->Drinks->find()
         ->where(['status' => 1])
         ->toArray();
 
         if ($this->request->is('post')) {
             $ingredient = $this->request->getData('ingredient');
-            dd($ingredient);
+            $guarrinson = $this->request->getData('guarrinson');
             $recipeTable = TableRegistry::getTableLocator()->get('Recipes');
             $recipe = $recipeTable->newEntity(
                 $this->request->getData()
             );
 
-            $recipe->ingredient_id = json_encode($ingredient["'id'"]);
-            $recipe->qtd_d = json_encode($ingredient["'qtd_d'"]);
             
+            
+            $recipe->ing = json_encode($ingredient['id']);
+            $recipe->qtd_d = json_encode($ingredient['qtd']);
+            $recipe->garrison = json_encode($guarrinson['id']);
+            $recipe->qtd_g = json_encode($guarrinson['qtd']);
+            
+            
+            
+
             $recipe->status = 1;
             $recipe->created_at = date('Y-m-d H:i:s');
             $recipe->updated_at = date('Y-m-d H:i:s');
 
-            if ($recipeTable->save($recipe)) {
+          
+            $save = $recipeTable->save($recipe);
+
+            if ($save) {
                 $this->Flash->success('Cliente salvo com sucesso.');
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller'=> 'drinks','action' => 'index']);
             } else {
                 $this->Flash->error('Erro ao salvar cliente.');
-                return $this->redirect(['action' => 'add']);
+                return $this->redirect([' action' => 'add']);
             }
         }
 
-        $this->set(compact('ing'));
+        $this->set(compact('ing', 'gua', 'cup', 'drk'));
     }
 
     public function view($id = null)

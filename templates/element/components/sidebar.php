@@ -43,9 +43,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= $this->Url->build(['controller'=>'recipes', 'action' => 'index']); ?>" class="nav-link">
+            <a href="<?= $this->Url->build(['controller'=>'recipes', 'action' => 'add']); ?>" class="nav-link">
               <i class="nav-icon fas fa-clipboard-list"></i>
               <p>Receita</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= $this->Url->build(['controller'=>'ingredients', 'action' => 'index']); ?>" class="nav-link">
+              <i class="nav-icon fas fa-apple-alt"></i>
+              <p>Ingredientes</p>
             </a>
           </li>
         </ul>

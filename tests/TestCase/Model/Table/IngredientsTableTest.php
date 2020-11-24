@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\RecipesTable;
+use App\Model\Table\IngredientsTable;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\RecipesTable Test Case
+ * App\Model\Table\IngredientsTable Test Case
  */
-class RecipesTableTest extends TestCase
+class IngredientsTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\RecipesTable
+     * @var \App\Model\Table\IngredientsTable
      */
-    protected $Recipes;
+    protected $Ingredients;
 
     /**
      * Fixtures
@@ -24,8 +24,7 @@ class RecipesTableTest extends TestCase
      * @var array
      */
     protected $fixtures = [
-        'app.Recipes',
-        'app.Drinks',
+        'app.Ingredients',
     ];
 
     /**
@@ -36,8 +35,8 @@ class RecipesTableTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $config = $this->getTableLocator()->exists('Recipes') ? [] : ['className' => RecipesTable::class];
-        $this->Recipes = $this->getTableLocator()->get('Recipes', $config);
+        $config = $this->getTableLocator()->exists('Ingredients') ? [] : ['className' => IngredientsTable::class];
+        $this->Ingredients = $this->getTableLocator()->get('Ingredients', $config);
     }
 
     /**
@@ -47,7 +46,7 @@ class RecipesTableTest extends TestCase
      */
     public function tearDown(): void
     {
-        unset($this->Recipes);
+        unset($this->Ingredients);
 
         parent::tearDown();
     }
@@ -58,16 +57,6 @@ class RecipesTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

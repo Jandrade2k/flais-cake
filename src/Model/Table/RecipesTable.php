@@ -11,8 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Recipes Model
  *
- * @property \App\Model\Table\IngredientsTable&\Cake\ORM\Association\BelongsTo $Ingredients
- * @property \App\Model\Table\DrinksTable&\Cake\ORM\Association\HasMany $Drinks
+ * @property \App\Model\Table\DrinksTable&\Cake\ORM\Association\BelongsTo $Drinks
  *
  * @method \App\Model\Entity\Recipe newEmptyEntity()
  * @method \App\Model\Entity\Recipe newEntity(array $data, array $options = [])
@@ -44,12 +43,9 @@ class RecipesTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Ingredients', [
-            'foreignKey' => 'ingredient_id',
+        $this->belongsTo('Drinks', [
+            'foreignKey' => 'drink_id',
             'joinType' => 'INNER',
-        ]);
-        $this->hasMany('Drinks', [
-            'foreignKey' => 'recipe_id',
         ]);
     }
 
@@ -71,8 +67,12 @@ class RecipesTable extends Table
             ->notEmptyString('preparation_mode');
 
         $validator
+            ->scalar('ing')
+            ->requirePresence('ing', 'create')
+            ->notEmptyString('ing');
+
+        $validator
             ->scalar('qtd_d')
-            ->maxLength('qtd_d', 255)
             ->requirePresence('qtd_d', 'create')
             ->notEmptyString('qtd_d');
 
@@ -117,7 +117,7 @@ class RecipesTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->existsIn(['ingredient_id'], 'Ingredients'), ['errorField' => 'ingredient_id']);
+        $rules->add($rules->existsIn(['drink_id'], 'Drinks'), ['errorField' => 'drink_id']);
 
         return $rules;
     }

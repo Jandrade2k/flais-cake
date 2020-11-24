@@ -96,16 +96,30 @@ class DrinksController extends AppController
             ->where(['drink_id' => $id])
             ->first();
 
+        if ($recipe == null) {
+            // TODO: Inserir cadastro de receita junto ao cadastro de Drink.
+            $this->Flash->error('Drink selecionado não tem receita, favor cadastrar.');
+            return $this->redirect(['action' => 'index']);
+        }
+
+        $this->loadModel('Ingredients');
+        $ingredients = $this->Ingredients->find('all')
+            ->where(['status' => 1])
+            ->toArray();
+
+        // dd($ingredients);
+
         $drinks = $this->Drinks->find()
             ->where(['id' => $id])
             ->where(['status' => 1])
             ->first();
 
+
         if (!$drinks) {
             $this->Flash->error('Drink não existe.');
             return $this->redirect(['action' => 'index']);
         }
-        $this->set(compact('drinks', 'recipe'));
+        $this->set(compact('drinks', 'recipe', 'ingredients'));
     }
 
     public function edit($id = null)

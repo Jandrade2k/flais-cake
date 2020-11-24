@@ -6,20 +6,17 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Drink Entity
+ * Ingredient Entity
  *
  * @property int $id
  * @property string $name
- * @property int $tipo_id
- * @property string|null $image
+ * @property string $type
  * @property int $status
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $updated_at
- *
- * @property \App\Model\Entity\EventsTipo $events_tipo
- * @property \App\Model\Entity\Recipe[] $recipes
+ * @property string $measures
  */
-class Drink extends Entity
+class Ingredient extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -32,12 +29,10 @@ class Drink extends Entity
      */
     protected $_accessible = [
         'name' => true,
-        'tipo_id' => true,
-        'image' => true,
+        'type' => true,
         'status' => true,
         'created_at' => true,
         'updated_at' => true,
-        'events_tipo' => true,
-        'recipes' => true,
+        'measures' => true,
     ];
 }
