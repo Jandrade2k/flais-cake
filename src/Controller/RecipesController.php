@@ -23,7 +23,6 @@ class RecipesController extends AppController
     public function add()
     {
         // FIXME: Tratar para não cadastrar duas receitas pro mesmo drink.
-        // FIXME: Ajeitar o select2.
         $this->loadModel('Ingredients');
         $ing = $this->Ingredients->find()
         ->where(['status' => 1])
@@ -40,8 +39,15 @@ class RecipesController extends AppController
         ->where(['type' => 1])
         ->toArray();
 
+        $this->loadModel('Recipes');
+
+        $recipe = $this->Recipes->find()
+            ->where(['status' => 1])
+            ->toArray();
+
         $this->loadModel('Drinks');
         $drk = $this->Drinks->find()
+        ->where(['id' => $recipe->drink_id])
         ->where(['status' => 1])
         ->toArray();
 
