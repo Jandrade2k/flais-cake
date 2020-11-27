@@ -138,7 +138,7 @@
                 </select>
             </div>
         </div>
-        
+
         <br>
 
         <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
@@ -167,17 +167,21 @@
                 <input name="qtd_bar" type="number" class="form-control" id="exampleInputPassword1" placeholder="Quantidade de bares">
             </div>
         </div>
-        <!-- <div class="form-group">
-        <label for="exampleInputUnit1">Drinks por convidado</label>
-        <button type="button" class="btn btn-block btn-primary" style="cursor:default">5,94</button>
-        </div> -->
+
 
     </div>
     <!-- /.card-body -->
 
-    <div class="card-footer">
-        <button type="submit" class="btn btn-success">Salvar</button>
-        <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'index']); ?>" class="btn btn-danger">Cancelar</a>
+    <div class="card-footer" style=" margin: 0 5px; display: flex; flex-direction:row; justify-content:space-between; align-items: center;">
+        <div>
+            <button type="submit" class="btn btn-success">Salvar</button>
+            <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'index']); ?>" class="btn btn-danger">Cancelar</a>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-info" style="cursor:default">Drinks p/ convidado</button>
+            <button type="button" class="btn btn-info" style="cursor:default">5,94</button>
+        </div>
     </div>
-    <?= $this->Form->end(); ?>
+</div>
+<?= $this->Form->end(); ?>
 </div>
