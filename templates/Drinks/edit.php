@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        <?= $this->Cell('recipe', ['id' => $drinks->id]); ?>
+        <?= $this->Cell('recipe', ['id' => $drinks->id ]);?>
 
 
     </div>

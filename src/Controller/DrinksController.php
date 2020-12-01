@@ -40,6 +40,22 @@ class DrinksController extends AppController
             ->where(['status' => 1])
             ->toArray();
 
+        $this->loadModel('Ingredients');
+        $ing = $this->Ingredients->find()
+            ->where(['status' => 1])
+            ->where(['type' => 3])
+            ->toArray();
+
+        $gua = $this->Ingredients->find()
+            ->where(['status' => 1])
+            ->where(['type' => 2])
+            ->toArray();
+
+        $cup = $this->Ingredients->find()
+            ->where(['status' => 1])
+            ->where(['type' => 1])
+            ->toArray();
+
         if ($this->request->is('post')) {
             $drinkTable = TableRegistry::getTableLocator()->get('Drinks');
             $drinks = $drinkTable->newEntity(
@@ -85,7 +101,7 @@ class DrinksController extends AppController
             $recipe->qtd_d = json_encode($ingredient['qtd']);
             $recipe->garrison = json_encode($guarrinson['id']);
             $recipe->qtd_g = json_encode($guarrinson['qtd']);
-            
+
             $recipe->status = 1;
             $recipe->created_at = date('Y-m-d H:i:s');
             $recipe->updated_at = date('Y-m-d H:i:s');
@@ -103,7 +119,7 @@ class DrinksController extends AppController
             }
         }
         // TODO: Tratar imagem.
-        $this->set(compact('tipo'));
+        $this->set(compact('tipo', 'ing', 'gua', 'cup'));
     }
 
     public function view($id = null)
@@ -151,6 +167,23 @@ class DrinksController extends AppController
         if ($id == null) {
             $this->redirect(['action' => 'index']);
         }
+
+        $this->loadmodel('Recipes');
+        $recipe = $this->Recipes->find()
+        ->where(['drink_id' => $id])
+        ->where(['status' =>1])
+        ->first();
+
+        $this->loadmodel('Ingredients');
+        $cup = $this->Ingredients->find()
+        ->where(['status' => 1])
+        ->where(['id'=> $recipe->cup])
+        ->where(['type' => 1])
+        ->first();
+
+
+
+        // dd($cups);
 
         $this->loadModel('Drinks');
 
@@ -209,7 +242,7 @@ class DrinksController extends AppController
             }
         }
 
-        $this->set(compact('drinks', 'tipo'));
+        $this->set(compact('drinks', 'tipo', 'recipe'));
     }
 
     public function delete($id = null)
