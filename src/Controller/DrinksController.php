@@ -55,7 +55,8 @@ class DrinksController extends AppController
                 mkdir('./upload/drinks/' . $drinks->id, 0777, true);
             }
 
-            $file = $this->request->getData('file');
+            // dd($this->request->getData());
+            $file = $this->request->getData('drinks-file');
             $ext = substr(strtolower(strrchr($file->getClientFilename(), '.')), 1); //get the extension
             $arr_ext = array('jpg', 'jpeg', 'gif'); //set allowed extensions
             $setNewFileName = time() . "_" . rand(000000, 999999);
@@ -70,7 +71,30 @@ class DrinksController extends AppController
                 $drinks->image = $imageFileName;
             }
 
-            if ($drinkTable->save($drinks)) {
+            $drinks->name = $this->request->getData('drink-name');
+            $drinks->tipo_id = $this->request->getData('drink-tipo_id');
+
+            $ingredient = $this->request->getData('ingredient');
+            $guarrinson = $this->request->getData('guarrinson');
+            $recipeTable = TableRegistry::getTableLocator()->get('Recipes');
+            $recipe = $recipeTable->newEntity(
+                $this->request->getData()
+            );
+
+            $recipe->ing = json_encode($ingredient['id']);
+            $recipe->qtd_d = json_encode($ingredient['qtd']);
+            $recipe->garrison = json_encode($guarrinson['id']);
+            $recipe->qtd_g = json_encode($guarrinson['qtd']);
+            
+            $recipe->status = 1;
+            $recipe->created_at = date('Y-m-d H:i:s');
+            $recipe->updated_at = date('Y-m-d H:i:s');
+
+            $save = $drinkTable->save($drinks);
+
+            $recipe->drink_id = $save->id;
+
+            if ($drinkTable->save($drinks) && $recipeTable->save($recipe)) {
                 $this->Flash->success('Drink salvo com sucesso.');
                 return $this->redirect(['action' => 'index']);
             } else {

@@ -47,7 +47,6 @@ class RecipesController extends AppController
 
         $this->loadModel('Drinks');
         $drk = $this->Drinks->find()
-        ->where(['id' => $recipe->drink_id])
         ->where(['status' => 1])
         ->toArray();
 

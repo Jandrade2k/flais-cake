@@ -8,11 +8,11 @@
     <div class="card-body">
         <div class="form-group">
             <label for="exampleInputName1">Nome</label>
-            <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome">
+            <input name="drink-name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome">
         </div>
         <div class="form-group">
             <label>Tipo de evento</label>
-            <select name="tipo_id" class="form-control" required>
+            <select name="drink-tipo_id" class="form-control" required>
                 <option selected disabled>Selecione um tipo</option>
                 <?php foreach ($tipo as $t) { ?>
                     <option value="<?= $t->id ?>"><?= ucfirst($t->name) ?></option>
@@ -23,7 +23,7 @@
             <label for="exampleInputFile">Imagem</label>
             <div class="input-group">
                 <div class="custom-file">
-                    <input name="file" accept="image/jpg, image/png, image/jpeg" type="file" class="custom-file-input" id="exampleInputFile">
+                    <input name="drinks-file" accept="image/jpg, image/png, image/jpeg" type="file" class="custom-file-input" id="exampleInputFile">
                     <label class="custom-file-label" for="exampleInputFile">Escolher foto</label>
                 </div>
                 <div class="input-group-append">
@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-
+        <?php echo $this->Cell('recipe') ?>
 
     </div>
     <!-- /.card-body -->

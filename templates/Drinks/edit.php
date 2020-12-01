@@ -32,6 +32,8 @@
             </div>
         </div>
 
+        <?= $this->Cell('recipe', ['id' => $drinks->id]); ?>
+
 
     </div>
     <!-- /.card-body -->

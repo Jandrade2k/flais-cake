@@ -74,6 +74,7 @@ to get the desired effect
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/demo.js"></script>
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/pages/dashboard3.js"></script>
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/jquery.mask.js"></script>
+    <?php echo $this->fetch('script'); ?>
     <script>
         $('.select2').select2();
         $('.form_date').mask('00/00/00');
@@ -105,6 +106,7 @@ to get the desired effect
                 });
         });
     </script>
+    
 </body>
 
 </html>
