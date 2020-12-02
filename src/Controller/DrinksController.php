@@ -170,16 +170,41 @@ class DrinksController extends AppController
 
         $this->loadmodel('Recipes');
         $recipe = $this->Recipes->find()
-        ->where(['drink_id' => $id])
-        ->where(['status' =>1])
-        ->first();
+            ->where(['drink_id' => $id])
+            ->where(['status' => 1])
+            ->first();
 
         $this->loadmodel('Ingredients');
         $cup = $this->Ingredients->find()
-        ->where(['status' => 1])
-        ->where(['id'=> $recipe->cup])
-        ->where(['type' => 1])
-        ->first();
+            ->where(['status' => 1])
+            ->where(['id' => $recipe->cup])
+            ->where(['type' => 1])
+            ->first();
+
+        $this->loadModel('Recipes');
+        if ($id) {
+            $recipe = $this->Recipes->find()
+                ->where(['drink_id' => $id])
+                ->first();
+        } else {
+            $recipe = null;
+        }
+
+        $this->loadModel('Ingredients');
+        $ing = $this->Ingredients->find()
+            ->where(['status' => 1])
+            ->where(['type' => 3])
+            ->toArray();
+
+        $gua = $this->Ingredients->find()
+            ->where(['status' => 1])
+            ->where(['type' => 2])
+            ->toArray();
+
+        $cups = $this->Ingredients->find()
+            ->where(['status' => 1])
+            ->where(['type' => 1])
+            ->toArray();
 
 
 
@@ -219,21 +244,46 @@ class DrinksController extends AppController
                 @unlink('./upload/drinks/' . $drinks->image);
             }
             $file = $this->request->getData('file');
-            $ext = substr(strtolower(strrchr($file->getClientFilename(), '.')), 1); //get the extension
-            $arr_ext = array('jpg', 'jpeg', 'gif'); //set allowed extensions
-            $setNewFileName = time() . "_" . rand(000000, 999999);
-            //prepare the filename for database entry
-            $imageFileName = $drinks->id . $setNewFileName . '.' . $ext;
+            if ($file->getClientFilename()) {
+                $ext = substr(strtolower(strrchr($file->getClientFilename(), '.')), 1); //get the extension
+                $arr_ext = array('jpg', 'jpeg', 'gif'); //set allowed extensions
+                $setNewFileName = time() . "_" . rand(000000, 999999);
+                //prepare the filename for database entry
+                $imageFileName = $drinks->id . $setNewFileName . '.' . $ext;
 
-            $target = WWW_ROOT . 'upload/drinks' . DS . $imageFileName;
+                $target = WWW_ROOT . 'upload/drinks' . DS . $imageFileName;
 
-            if ($imageFileName) {
-                $file->moveTo($target);
+                if ($imageFileName) {
+                    $file->moveTo($target);
 
-                $drinks->image = $imageFileName;
+                    $drinks->image = $imageFileName;
+                }
+            } else {
+                $drinks->image = null;
             }
 
-            if ($this->Drinks->save($drinks)) {
+            $ing_id = $this->Recipes->find()
+            ->where(['drink_id' => $id])->first();
+
+            $ingredient = $this->request->getData('ingredient');
+            $guarrinson = $this->request->getData('guarrinson');
+            $recipeTable = TableRegistry::getTableLocator()->get('Recipes');
+            $recipe = $recipeTable->get($ing_id->id);
+            $recipeTable->patchEntity(
+                $recipe,
+                $this->request->getData()
+            );
+
+            $recipe->ing = json_encode($ingredient['id']);
+            $recipe->qtd_d = json_encode($ingredient['qtd']);
+            $recipe->garrison = json_encode($guarrinson['id']);
+            $recipe->qtd_g = json_encode($guarrinson['qtd']);
+
+            $recipe->status = 1;
+            $recipe->updated_at = date('Y-m-d H:i:s');
+
+
+            if ($this->Drinks->save($drinks) && $this->Recipes->save($recipe)) {
                 $this->Flash->success('Drink atualizado com sucesso.');
                 return $this->redirect(['action' => 'index']);
             } else {
@@ -242,7 +292,8 @@ class DrinksController extends AppController
             }
         }
 
-        $this->set(compact('drinks', 'tipo', 'recipe'));
+
+        $this->set(compact('drinks', 'tipo', 'recipe', 'cups', 'gua', 'ing'));
     }
 
     public function delete($id = null)
