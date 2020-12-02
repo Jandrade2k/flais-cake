@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+      <!-- DataTables -->
+  <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -69,16 +72,27 @@ to get the desired effect
     <script src="<?= $this->request->getAttribute('webroot'); ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE -->
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/adminlte.js"></script>
-
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <!-- OPTIONAL SCRIPTS -->
     <script src="<?= $this->request->getAttribute('webroot'); ?>plugins/chart.js/Chart.min.js"></script>
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/demo.js"></script>
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/pages/dashboard3.js"></script>
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/jquery.mask.js"></script>
+    <!-- DataTables -->
+    <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
-    
+
 
     <script>
+        $(function() {
+            $(".table").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+        });
         $('.select2').select2();
         $('.form_date').mask('00/00/00');
         $('.din').mask('000.000.000.000.000,00', {
@@ -108,9 +122,8 @@ to get the desired effect
                     console.log(jqXHR);
                 });
         });
-        
     </script>
-    
+
 </body>
 
 </html>
