@@ -6,6 +6,6 @@
       </li>
     </ul>
     <div style="margin-left:40%;">
-      <img src="<?= $this->request->getAttribute('webroot'); ?>/img/flairs logo.png" style="width:40%; height:40%;"/>
+      <img src="<?= $this->request->getAttribute('webroot'); ?>img/flairs logo.png" style="width:40%; height:40%;"/>
     </div>
   </nav>
