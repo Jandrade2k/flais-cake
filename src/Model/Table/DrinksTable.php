@@ -91,6 +91,11 @@ class DrinksTable extends Table
             ->requirePresence('updated_at', 'create')
             ->notEmptyDateTime('updated_at');
 
+        $validator
+            ->scalar('link')
+            ->maxLength('link', 50)
+            ->allowEmptyString('link');
+
         return $validator;
     }
 

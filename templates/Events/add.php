@@ -167,6 +167,9 @@
                 <input name="qtd_bar" type="number" class="form-control" id="exampleInputPassword1" placeholder="Quantidade de bares">
             </div>
         </div>
+        <div class="form-group" style="margin: 0 5px; width:30%">
+            <input name="drinks_guests" type="hidden" class="form-control" id="exampleInputPassword1" value="5.00">
+        </div>
 
 
     </div>
@@ -175,11 +178,11 @@
     <div class="card-footer" style=" margin: 0 5px; display: flex; flex-direction:row; justify-content:space-between; align-items: center;">
         <div>
             <button type="submit" class="btn btn-success">Salvar</button>
-            <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'index']); ?>" class="btn btn-danger">Cancelar</a>
+            <a href="<?= $this->Url->build(['controller' => 'events', 'action' => 'index']); ?>" class="btn btn-danger">Cancelar</a>
         </div>
         <div class="btn-group">
-            <button type="button" class="btn btn-info" style="cursor:default">Drinks p/ convidado</button>
-            <button type="button" class="btn btn-info" style="cursor:default">5,94</button>
+            <button type="button" class="btn btn-info" style="cursor:default">Drinks por convidado</button>
+            <button type="button" class="btn btn-info" style="cursor:default">5,00</button>
         </div>
     </div>
 </div>

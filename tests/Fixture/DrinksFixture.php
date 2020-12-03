@@ -24,6 +24,7 @@ class DrinksFixture extends TestFixture
         'status' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'created_at' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => null, 'comment' => ''],
         'updated_at' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => null, 'comment' => ''],
+        'link' => ['type' => 'string', 'length' => 50, 'null' => true, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
         '_indexes' => [
             'tipo_evento' => ['type' => 'index', 'columns' => ['tipo_id'], 'length' => []],
         ],
@@ -51,8 +52,9 @@ class DrinksFixture extends TestFixture
                 'tipo_id' => 1,
                 'image' => 'Lorem ipsum dolor sit amet',
                 'status' => 1,
-                'created_at' => '2020-11-24 16:38:35',
-                'updated_at' => '2020-11-24 16:38:35',
+                'created_at' => '2020-12-03 14:12:47',
+                'updated_at' => '2020-12-03 14:12:47',
+                'link' => 'Lorem ipsum dolor sit amet',
             ],
         ];
         parent::init();

@@ -5,12 +5,12 @@
         </div>
         <div class="card-body pt-0">
             <div class="row" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
-                <div class="col-5 text-center">
+                <div class="col-5 text-center" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
                     <img src="<?= $this->request->getAttribute('webroot') . 'upload/drinks/' . $drinks->image; ?>" alt="" class="img-circle img-bordered-sm" style="width:120px;">
                 </div>
                 <br>
                 <br>
-                <div class="col-7" style="display:inline-block">
+                <div class="col-7" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
                     <p class="text-muted text-sm"><b>Ingedientes: </b><br>
                         <ul>
                             <?php
@@ -58,6 +58,11 @@
                     </p>
                     <br>
                     <p class="text-muted text-sm"><b>Modo de preparo: </b><br> <?= $recipe->preparation_mode ?> </p>
+                    <hr>
+                    <?php if ($drinks->link) { ?>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= $drinks->link ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <?php } ?>
+
                 </div>
             </div>
         </div>

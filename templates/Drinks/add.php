@@ -37,27 +37,16 @@
             <br>
             <table class="ing">
                 <tr>
-
-                    <?php $x = 0;
-                    foreach ($ing as $key => $se) {
-
-                        if (in_array($se->id, json_decode($recipe->ing))) {
-                            $arr = json_decode($recipe->qtd_d);
-                    ?>
-                            <div class="ingrediente" style="display:flex; flex-direction:row; justify-content:center; align-items:center; margin:5px;">
-                                <select name="ingredient[id][]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">
-                                    <option selected disabled>Selecione um ingrediente</option>
-                                    <?php foreach ($ing as $el) { ?>
-                                        <option <?= $se->id == $el->id ? 'selected' : '' ?> value="<?= $el->id ?>"><?= $el->name ?></option>
-                                    <?php } ?>
-                                </select>
-                                <input name="ingredient[qtd][]" class="form-control" type="number" placeholder="quantidade" style="width:10%; margin:5px;">
-                                <a id="firstIng" type="button" class=" btn removeIng" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></a>
-                            </div>
-                    <?php
-                        }
-                    } ?>
-
+                    <div class="ingrediente" style="display:flex; flex-direction:row; justify-content:center; align-items:center; margin:5px;">
+                        <select name="ingredient[id][]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">
+                            <option selected disabled>Selecione um ingrediente</option>
+                            <?php foreach ($ing as $el) { ?>
+                                <option <?= $se->id == $el->id ? 'selected' : '' ?> value="<?= $el->id ?>"><?= $el->name ?></option>
+                            <?php } ?>
+                        </select>
+                        <input name="ingredient[qtd][]" class="form-control" type="number" placeholder="quantidade" style="width:10%; margin:5px;">
+                        <a id="firstIng" type="button" class=" btn removeIng" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></a>
+                    </div>
                 </tr>
             </table>
         </div>
@@ -67,22 +56,16 @@
             <br>
             <table class="ing">
                 <tr>
-                    <?php $y = 0;
-                    foreach ($gua as $val) {
-                        if (in_array($val->id, json_decode($recipe->garrison))) {
-                            $ar = json_decode($recipe->qtd_g) ?>
-                            <div class="guarrinson" style="display:flex; flex-direction:row; justify-content:center; align-items:center; margin:5px;">
-                                <select name="guarrinson[id][]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">
-                                    <option selected disabled>Selecione um guarnição</option>
-                                    <?php foreach ($gua as $el) { ?>
-                                        <option <?= $val->id == $el->id ? 'selected' : '' ?> value="<?= $el->id ?>"><?= $el->name ?></option>
-                                    <?php } ?>
-                                </select>
-                                <input name="guarrinson[qtd][]" class="form-control" type="number" placeholder="quantidade" style="width:10%; margin:5px;">
-                                <a id="firstIng" type="button" class=" btn removeGua" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></a>
-                            </div>
-                    <?php }
-                    } ?>
+                    <div class="guarrinson" style="display:flex; flex-direction:row; justify-content:center; align-items:center; margin:5px;">
+                        <select name="guarrinson[id][]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">
+                            <option selected disabled>Selecione um guarnição</option>
+                            <?php foreach ($gua as $el) { ?>
+                                <option <?= $val->id == $el->id ? 'selected' : '' ?> value="<?= $el->id ?>"><?= $el->name ?></option>
+                            <?php } ?>
+                        </select>
+                        <input name="guarrinson[qtd][]" class="form-control" type="number" placeholder="quantidade" style="width:10%; margin:5px;">
+                        <a id="firstIng" type="button" class=" btn removeGua" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></a>
+                    </div>
                 </tr>
             </table>
         </div>
@@ -102,6 +85,17 @@
         <div class="form-group">
             <label>Modo de preparo</label>
             <textarea name="preparation_mode" class="form-control" rows="3" placeholder="Aa..." style="margin-top: 0px; margin-bottom: 0px; height: 114px; max-height:150px;"><?= isset($recipe->preparation_mode) ? $recipe->preparation_mode : null ?></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputUnit1">Link da receita</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fab fa-youtube"></i>
+                    </span>
+                </div>
+                <input name="link" type="text" class="form-control">
+            </div>
         </div>
 
     </div>

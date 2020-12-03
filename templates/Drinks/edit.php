@@ -99,7 +99,7 @@
                 <option selected disabled>Selecione um copo/taça</option>
 
                 <?php
-                foreach ($cup as $el) { ?>
+                foreach ($cups as $el) { ?>
                     <option <?= $el->id == $recipe->cup ? 'selected' : ''; ?> value="<?= $el->id ?>"><?= $el->name ?></option>
                 <?php } ?>
             </select>
@@ -108,7 +108,17 @@
             <label>Modo de preparo</label>
             <textarea name="preparation_mode" class="form-control" rows="3" placeholder="Aa..." style="margin-top: 0px; margin-bottom: 0px; height: 114px; max-height:150px;"><?= isset($recipe->preparation_mode) ? $recipe->preparation_mode : null ?></textarea>
         </div>
-
+        <div class="form-group">
+            <label for="exampleInputUnit1">Link da receita</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fab fa-youtube"></i>
+                    </span>
+                </div>
+                <input name="link" type="text"  value="<?= $drinks->link ? 'https://www.youtube.com/watch?v=' : '' ?><?= $drinks->link ?>" class="form-control">
+            </div>
+        </div>
 
     </div>
     <!-- /.card-body -->
@@ -119,62 +129,3 @@
     </div>
     <?= $this->Form->end(); ?>
 </div>
-<script>
-    $('document').ready(function() {
-        var max_fields = 10;
-        var x = 1;
-        $('.addIng').click(function(e) {
-                e.preventDefault();
-                if (x < max_fields) {
-                    $('#ingred').append(`\
-                        <div class="ingrediente" style="display:flex; flex-direction:row; justify-content:center; align-items:center; margin:5px;">\
-                        <select name="ingredient[id][]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">\
-                        <option selected disabled>Selecione um ingrediente</option>\
-                            <?php foreach ($ing as $el) { ?>\
-                                <option value="<?= $el->id ?>"><?= $el->name ?></option>\
-                            <?php } ?>\
-                        </select>\
-                        <input name="ingredient[qtd][]" class="form-control" type="number" placeholder="quantidade" style="width:10%; margin:5px;">\
-                        <a type="button" class=" btn removeIng" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></a>\
-                    </div>\
-                        `)
-                    x++;
-                }
-
-                $('.removeIng').on('click', function(e) {
-                    e.preventDefault();
-                    var linha = $(this.parentNode);
-                    linha.remove();
-                    x--;
-                });
-            }),
-
-            $('.addGua').click(function(e) {
-                e.preventDefault();
-                if (x < max_fields) {
-                    $('#guarrinson').append(`\
-                        <div class="guarrinson" style="display:flex; flex-direction:row; justify-content:center; align-items:center; margin:5px;">\
-                        <select name="guarrinson[id][]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">\
-                        <option selected disabled>Selecione um guarnição</option>\
-                            <?php foreach ($gua as $el) { ?>\
-                                <option value="<?= $el->id ?>"><?= $el->name ?></option>\
-                            <?php } ?>\
-                        </select>\
-                        <input name="guarrinson[qtd][]" class="form-control" type="number" placeholder="quantidade" style="width:10%; margin:5px;">\
-                        <a id="firstIng" type="button" class=" btn removeGua" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></a>\
-                    </div>\
-                        `)
-                    x++;
-                }
-
-                $('.removeGua').on('click', function(e) {
-                    e.preventDefault();
-                    var linha = $(this.parentNode);
-                    linha.remove();
-                    x--;
-                })
-            });
-
-
-    })
-</script>

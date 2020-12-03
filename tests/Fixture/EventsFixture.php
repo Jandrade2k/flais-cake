@@ -45,9 +45,9 @@ class EventsFixture extends TestFixture
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
+            'customer' => ['type' => 'foreign', 'columns' => ['customer_id'], 'references' => ['customers', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
             'tipo_id' => ['type' => 'foreign', 'columns' => ['tipo_id'], 'references' => ['events_tipos', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
             'proposal' => ['type' => 'foreign', 'columns' => ['porposal_id'], 'references' => ['proposal', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
-            'customer' => ['type' => 'foreign', 'columns' => ['customer_id'], 'references' => ['customers', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -83,8 +83,8 @@ class EventsFixture extends TestFixture
                 'qtd_bar' => 1,
                 'customer_id' => 1,
                 'status' => 1,
-                'created_at' => '2020-11-24 16:38:35',
-                'updated_at' => '2020-11-24 16:38:35',
+                'created_at' => '2020-12-03 14:11:59',
+                'updated_at' => '2020-12-03 14:11:59',
             ],
         ];
         parent::init();

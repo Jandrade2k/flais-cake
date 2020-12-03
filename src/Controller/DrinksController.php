@@ -90,6 +90,14 @@ class DrinksController extends AppController
             $drinks->name = $this->request->getData('drink-name');
             $drinks->tipo_id = $this->request->getData('drink-tipo_id');
 
+            $link = $this->request->getData('link');
+
+            $embed = explode('v=', $link);
+
+            $drinks->link = $embed[1];
+
+            dd($drinks);
+
             $ingredient = $this->request->getData('ingredient');
             $guarrinson = $this->request->getData('guarrinson');
             $recipeTable = TableRegistry::getTableLocator()->get('Recipes');
@@ -261,6 +269,13 @@ class DrinksController extends AppController
             } else {
                 $drinks->image = null;
             }
+
+            $link = $this->request->getData('link');
+
+            $embed = explode('v=', $link);
+
+            $drinks->link = $embed[1];
+
 
             $ing_id = $this->Recipes->find()
             ->where(['drink_id' => $id])->first();
