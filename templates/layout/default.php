@@ -84,7 +84,68 @@ to get the desired effect
     <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
+    <?php if (($this->request->getParam('controller') == 'Drinks' && $this->request->getParam('action') == 'add') || $this->request->getParam('controller') == 'Drinks' && $this->request->getParam('action') == 'edit') { ?>
+    
+    <script>
+        $('document').ready(function() {
+            var max_fields = 10;
+            var x = 1;
+            $('.addIng').click(function(e) {
+                    e.preventDefault();
+                    if (x < max_fields) {
+                        $('#ingred').append(`\
+                <div class="ingrediente" style="display:flex; flex-direction:row; justify-content:center; align-items:center; margin:5px;">\
+                <select name="ingredient[id][]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">\
+                <option selected disabled>Selecione um ingrediente</option>\
+                    <?php foreach ($ing as $el) { ?>\
+                        <option value="<?= $el->id ?>"><?= $el->name ?></option>\
+                    <?php } ?>\
+                </select>\
+                <input name="ingredient[qtd][]" class="form-control" type="number" placeholder="quantidade" style="width:10%; margin:5px;">\
+                <a type="button" class=" btn removeIng" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></a>\
+            </div>\
+                `)
+                        x++;
+                    }
 
+                    $('.removeIng').on('click', function(e) {
+                        e.preventDefault();
+                        var linha = $(this.parentNode);
+                        linha.remove();
+                        x--;
+                    });
+                }),
+
+                $('.addGua').click(function(e) {
+                    e.preventDefault();
+                    if (x < max_fields) {
+                        $('#guarrinson').append(`\
+                <div class="guarrinson" style="display:flex; flex-direction:row; justify-content:center; align-items:center; margin:5px;">\
+                <select name="guarrinson[id][]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">\
+                <option selected disabled>Selecione um guarnição</option>\
+                    <?php foreach ($gua as $el) { ?>\
+                        <option value="<?= $el->id ?>"><?= $el->name ?></option>\
+                    <?php } ?>\
+                </select>\
+                <input name="guarrinson[qtd][]" class="form-control" type="number" placeholder="quantidade" style="width:10%; margin:5px;">\
+                <a id="firstIng" type="button" class=" btn removeGua" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></a>\
+            </div>\
+                `)
+                        x++;
+                    }
+
+                    $('.removeGua').on('click', function(e) {
+                        e.preventDefault();
+                        var linha = $(this.parentNode);
+                        linha.remove();
+                        x--;
+                    })
+                });
+
+
+        })
+    </script>
+<?php } ?>
 
     <script>
         $(function() {

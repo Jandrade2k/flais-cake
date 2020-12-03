@@ -38,12 +38,6 @@
             <table class="ing">
                 <tr>
 
-                    <?php $x = 0;
-                    foreach ($ing as $key => $se) {
-
-                        if (in_array($se->id, json_decode($recipe->ing))) {
-                            $arr = json_decode($recipe->qtd_d);
-                    ?>
                             <div class="ingrediente" style="display:flex; flex-direction:row; justify-content:center; align-items:center; margin:5px;">
                                 <select name="ingredient[id][]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">
                                     <option selected disabled>Selecione um ingrediente</option>
@@ -54,10 +48,6 @@
                                 <input name="ingredient[qtd][]" class="form-control" type="number" placeholder="quantidade" style="width:10%; margin:5px;">
                                 <a id="firstIng" type="button" class=" btn removeIng" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></a>
                             </div>
-                    <?php
-                        }
-                    } ?>
-
                 </tr>
             </table>
         </div>
@@ -67,10 +57,6 @@
             <br>
             <table class="ing">
                 <tr>
-                    <?php $y = 0;
-                    foreach ($gua as $val) {
-                        if (in_array($val->id, json_decode($recipe->garrison))) {
-                            $ar = json_decode($recipe->qtd_g) ?>
                             <div class="guarrinson" style="display:flex; flex-direction:row; justify-content:center; align-items:center; margin:5px;">
                                 <select name="guarrinson[id][]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">
                                     <option selected disabled>Selecione um guarnição</option>
@@ -81,8 +67,6 @@
                                 <input name="guarrinson[qtd][]" class="form-control" type="number" placeholder="quantidade" style="width:10%; margin:5px;">
                                 <a id="firstIng" type="button" class=" btn removeGua" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></a>
                             </div>
-                    <?php }
-                    } ?>
                 </tr>
             </table>
         </div>
