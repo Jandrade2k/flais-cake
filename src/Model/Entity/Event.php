@@ -29,6 +29,7 @@ use Cake\ORM\Entity;
  * @property int $status
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $updated_at
+ * @property float|null $drinks_guests
  *
  * @property \App\Model\Entity\EventsTipo $events_tipo
  * @property \App\Model\Entity\Proposal $proposal
@@ -66,6 +67,7 @@ class Event extends Entity
         'status' => true,
         'created_at' => true,
         'updated_at' => true,
+        'drinks_guests' => true,
         'events_tipo' => true,
         'proposal' => true,
         'customer' => true,

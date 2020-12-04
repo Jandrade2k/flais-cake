@@ -48,8 +48,8 @@ class UsersFixture extends TestFixture
                 'password' => 'Lorem ipsum dolor sit amet',
                 'name' => 'Lorem ipsum dolor sit amet',
                 'unit' => 'Lorem ipsum dolor sit amet',
-                'created_at' => '2020-12-03 14:12:00',
-                'updated_at' => '2020-12-03 14:12:00',
+                'created_at' => '2020-12-04 19:17:54',
+                'updated_at' => '2020-12-04 19:17:54',
                 'status' => 1,
             ],
         ];

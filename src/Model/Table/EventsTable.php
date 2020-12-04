@@ -158,6 +158,10 @@ class EventsTable extends Table
             ->requirePresence('updated_at', 'create')
             ->notEmptyDateTime('updated_at');
 
+        $validator
+            ->numeric('drinks_guests')
+            ->allowEmptyString('drinks_guests');
+
         return $validator;
     }
 

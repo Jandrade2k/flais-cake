@@ -38,6 +38,7 @@
                                         <div class="btn-group">
                                             <a href="<?= $this->Url->build(['controller' => 'events', 'action' => 'view', $el->id]); ?>" class="btn btn-info"><i class="fas fa-eye"></i></a>
                                             <a href="<?= $this->Url->build(['controller' => 'events', 'action' => 'edit', $el->id]); ?>" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
+                                            <a href="<?= $this->Url->build(['controller' => 'inventory', 'action' => 'edit', $el->id]); ?>" class="btn btn-warning"><i class="fas fa-box"></i></a>
                                             <button data-toggle="modal" data-target="#modal-danger_<?= $el->id; ?>" type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                         </div>
                                     </td>

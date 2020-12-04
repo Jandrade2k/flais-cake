@@ -54,6 +54,12 @@
               <p>Ingredientes</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?= $this->Url->build(['controller'=>'events', 'action' => 'index']); ?>" class="nav-link">
+            <i class="fas fa-boxes"></i>
+              <p>Inventário</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

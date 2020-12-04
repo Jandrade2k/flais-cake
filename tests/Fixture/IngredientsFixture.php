@@ -46,8 +46,8 @@ class IngredientsFixture extends TestFixture
                 'name' => 'Lorem ipsum dolor sit amet',
                 'type' => 'Lorem ipsum dolor sit amet',
                 'status' => 1,
-                'created_at' => '2020-12-03 14:12:00',
-                'updated_at' => '2020-12-03 14:12:00',
+                'created_at' => '2020-12-04 19:17:54',
+                'updated_at' => '2020-12-04 19:17:54',
                 'measures' => 'Lorem ipsum dolor sit amet',
             ],
         ];

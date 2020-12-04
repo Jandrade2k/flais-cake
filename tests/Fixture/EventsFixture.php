@@ -38,6 +38,7 @@ class EventsFixture extends TestFixture
         'status' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'created_at' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => null, 'comment' => ''],
         'updated_at' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => null, 'comment' => ''],
+        'drinks_guests' => ['type' => 'float', 'length' => null, 'precision' => null, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => ''],
         '_indexes' => [
             'tipo_id' => ['type' => 'index', 'columns' => ['tipo_id'], 'length' => []],
             'proposal' => ['type' => 'index', 'columns' => ['porposal_id'], 'length' => []],
@@ -45,9 +46,9 @@ class EventsFixture extends TestFixture
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
+            'proposal' => ['type' => 'foreign', 'columns' => ['porposal_id'], 'references' => ['proposal', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
             'customer' => ['type' => 'foreign', 'columns' => ['customer_id'], 'references' => ['customers', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
             'tipo_id' => ['type' => 'foreign', 'columns' => ['tipo_id'], 'references' => ['events_tipos', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
-            'proposal' => ['type' => 'foreign', 'columns' => ['porposal_id'], 'references' => ['proposal', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -83,8 +84,9 @@ class EventsFixture extends TestFixture
                 'qtd_bar' => 1,
                 'customer_id' => 1,
                 'status' => 1,
-                'created_at' => '2020-12-03 14:11:59',
-                'updated_at' => '2020-12-03 14:11:59',
+                'created_at' => '2020-12-04 19:17:54',
+                'updated_at' => '2020-12-04 19:17:54',
+                'drinks_guests' => 1,
             ],
         ];
         parent::init();
