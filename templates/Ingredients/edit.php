@@ -19,6 +19,14 @@
                     <option <?= $ingredient->type == 1 ? 'selected' : ''?> value="1">Copo/Taça</option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="exampleInputName1">Unidade de medida</label>
+            <input name="measures" type="text" value="<?= $ingredient->measure ?>" class="form-control" id="exampleInputEmail1" placeholder="Unidade de medida">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputName1">Total unidade</label>
+            <input name="total" type="text" value="<?= $ingredient->total ?>" class="form-control" id="exampleInputEmail1" placeholder="Total unidade">
+        </div>
     </div>
     <!-- /.card-body -->
 
