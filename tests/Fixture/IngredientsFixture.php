@@ -24,6 +24,7 @@ class IngredientsFixture extends TestFixture
         'created_at' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => null, 'comment' => ''],
         'updated_at' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => null, 'comment' => ''],
         'measures' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => '', 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
+        'total' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -46,9 +47,10 @@ class IngredientsFixture extends TestFixture
                 'name' => 'Lorem ipsum dolor sit amet',
                 'type' => 'Lorem ipsum dolor sit amet',
                 'status' => 1,
-                'created_at' => '2020-12-04 19:17:54',
-                'updated_at' => '2020-12-04 19:17:54',
+                'created_at' => '2020-12-07 16:21:12',
+                'updated_at' => '2020-12-07 16:21:12',
                 'measures' => 'Lorem ipsum dolor sit amet',
+                'total' => 'Lorem ipsum dolor sit amet',
             ],
         ];
         parent::init();

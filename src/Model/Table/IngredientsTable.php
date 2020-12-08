@@ -86,6 +86,12 @@ class IngredientsTable extends Table
             ->maxLength('measures', 50)
             ->notEmptyString('measures');
 
+        $validator
+            ->scalar('total')
+            ->maxLength('total', 50)
+            ->requirePresence('total', 'create')
+            ->notEmptyString('total');
+
         return $validator;
     }
 }

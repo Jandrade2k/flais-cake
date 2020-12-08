@@ -35,14 +35,31 @@ class InventoryController extends AppController
         ->toArray();
 
         if ($this->request->is('post')) {
-            $inventoriesTable = TableRegistry::getTableLocator()->get('Events');
+            $products = $this->request->getData('products');
+            $number = $this->request->getData('number');
+            $inventoriesTable = TableRegistry::getTableLocator()->get('Inventories');
             $inventories = $inventoriesTable->newEntity(
                 $this->request->getData()
             );
 
-            $inventories->events = $id;
+            $inventories->event = $id;
 
-            // dd($inventories);
+            $inventories->products = json_encode($products['id']);
+            $inventories->number = json_encode($number['id']);
+            $inventories->created_at = date('Y-m-d H:i:s');
+            $inventories->updated_at = date('Y-m-d H:i:s');
+
+            
+            $save = $inventoriesTable->save($inventories);
+            if ($save) {
+                $this->Flash->success('Inventário do evento concluido!');
+                return $this->redirect(['controller' => 'events', 'action' => 'index']);
+            } else {
+                $this->Flash->error('Erro ao criar o inventário do evento');
+                dd($inventories);
+                return $this->redirect(['action' => 'add']);
+            }
+            
         }
         $this->set(compact('events', 'drinks'));
     }

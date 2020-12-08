@@ -21,6 +21,7 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>css/global.css">
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -84,8 +85,83 @@ to get the desired effect
     <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
-    <?php if (($this->request->getParam('controller') == 'Drinks' && $this->request->getParam('action') == 'add') || $this->request->getParam('controller') == 'Drinks' && $this->request->getParam('action') == 'edit') { ?>
+    <?php if (($this->request->getParam('controller') == 'Inventory' && $this->request->getParam('action') == 'add') || $this->request->getParam('controller') == 'Inventory' && $this->request->getParam('action') == 'edit') { ?>
+        <script>
+            $('document').ready(function() {
+                var txt = $('#totalDrk').text();
 
+                $('.addNum').click(function(e) {
+                    console.log($('.num').val());
+                    if (!$('.num').val()) {
+                        $('.num').val(0);
+                    }
+                    e.preventDefault();
+                    var val = $('.num').val();
+                    val = parseInt(val) + 10;
+                    $('.num').val(val);
+                    alteraTotal();
+                })
+
+                $('.reNum').click(function(e) {
+                    if (!$('.num').val()) {
+                        $('.num').val(0);
+                    }
+                    if ($('.num').val() < 10) {
+                        $('.num').val(0);
+                    } else {
+                        e.preventDefault();
+                        var val = $('.num').val();
+                        val = parseInt(val) - 10;
+                        $('.num').val(val);
+                    }
+                    alteraTotal();
+                })
+
+                $('.num').on('change', function() {
+                    alteraTotal();
+                })
+
+                function alteraTotal() {
+                    var soma = $('.num').val();
+                    var res = parseInt(txt) - soma;
+                    $('#totalDrk').text(res);
+                }
+
+                var y = 1;
+                $('.addDrk').click(function(e) {
+                    e.preventDefault();
+                    $('#drk').append(`\
+                    <div style="display:flex; flex-direction:row; justify-content:center; align-items:center; width:100%;">\
+                        <a type="button" class="btn reDrk" style="margin:5px;"><i class="fas fa-trash" style="width:20px; height:20px;"></i></a>\
+                        <select name="products[id][]" class="form-control select2 " style="width: 50%;" tabindex="-1" aria-hidden="true">\
+                            <option selected disabled>Selecione um drink</option>\
+                            <?php foreach ($drinks as $el) { ?>\
+                                <option value="<?= $el->id ?>"><?= $el->name ?></option>\
+                            <?php } ?>\
+                        </select>\
+                        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">\
+                            <a type="button" class="btn addNum" style="margin:5px;"><i class="fas fa-plus-circle" style="width:20px; height:20px;"></i></a>\
+                            <input class="form-control num" name="number[id][]" type="number" value="0" style="width:25%;">\
+                            <a type="button" class="btn reNum" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></a>\
+                        </div>\
+                    </div>\
+                    `)
+                    y++;
+
+                    $('.reDrk').on('click', function(e) {
+                        e.preventDefault();
+                        var linha = $(this.parentNode);
+                        linha.remove();
+                        y--;
+                    })
+                })
+
+            })
+        </script>
+    <?php } ?>
+
+
+    <?php if (($this->request->getParam('controller') == 'Drinks' && $this->request->getParam('action') == 'add') || $this->request->getParam('controller') == 'Drinks' && $this->request->getParam('action') == 'edit') { ?>
         <script>
             $('document').ready(function() {
                 var max_fields = 10;
@@ -107,7 +183,6 @@ to get the desired effect
                 `)
                             x++;
                         }
-
                         $('.removeIng').on('click', function(e) {
                             e.preventDefault();
                             var linha = $(this.parentNode);
