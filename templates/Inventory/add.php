@@ -25,9 +25,9 @@
                             <?php } ?>
                         </select>
                         <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
-                            <a type="button" class="btn addNum" style="margin:5px;"><i class="fas fa-plus-circle" style="width:20px; height:20px;"></i></a>
-                            <input class="form-control num" name="number[id][]" type="number" value="0" style="width:25%;">
-                            <a type="button" class="btn reNum" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></a>
+                            <button onClick="addNum(this)" type="button" class="btn addNum" style="margin:5px;"><i class="fas fa-plus-circle" style="width:20px; height:20px;"></i></button>
+                            <input onChange="change(this)" old-value="" class="form-control num" name="number[id][]" type="number" value="0" style="width:25%;" disabled>
+                            <button onClick="reNum(this)" type="button" class="btn reNum" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></button>
                         </div>
                     </div>
                 </div>

@@ -88,45 +88,6 @@ to get the desired effect
     <?php if (($this->request->getParam('controller') == 'Inventory' && $this->request->getParam('action') == 'add') || $this->request->getParam('controller') == 'Inventory' && $this->request->getParam('action') == 'edit') { ?>
         <script>
             $('document').ready(function() {
-                var txt = $('#totalDrk').text();
-
-                $('.addNum').click(function(e) {
-                    console.log($('.num').val());
-                    if (!$('.num').val()) {
-                        $('.num').val(0);
-                    }
-                    e.preventDefault();
-                    var val = $('.num').val();
-                    val = parseInt(val) + 10;
-                    $('.num').val(val);
-                    alteraTotal();
-                })
-
-                $('.reNum').click(function(e) {
-                    if (!$('.num').val()) {
-                        $('.num').val(0);
-                    }
-                    if ($('.num').val() < 10) {
-                        $('.num').val(0);
-                    } else {
-                        e.preventDefault();
-                        var val = $('.num').val();
-                        val = parseInt(val) - 10;
-                        $('.num').val(val);
-                    }
-                    alteraTotal();
-                })
-
-                $('.num').on('change', function() {
-                    alteraTotal();
-                })
-
-                function alteraTotal() {
-                    var soma = $('.num').val();
-                    var res = parseInt(txt) - soma;
-                    $('#totalDrk').text(res);
-                }
-
                 var y = 1;
                 $('.addDrk').click(function(e) {
                     e.preventDefault();
@@ -140,9 +101,9 @@ to get the desired effect
                             <?php } ?>\
                         </select>\
                         <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">\
-                            <a type="button" class="btn addNum" style="margin:5px;"><i class="fas fa-plus-circle" style="width:20px; height:20px;"></i></a>\
-                            <input class="form-control num" name="number[id][]" type="number" value="0" style="width:25%;">\
-                            <a type="button" class="btn reNum" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></a>\
+                            <button onClick="addNum(this)" type="button" class="btn addNum" style="margin:5px;"><i class="fas fa-plus-circle" style="width:20px; height:20px;"></i></button>\
+                            <input onChange="change(this)" class="form-control num" name="number[id][]" type="number" value="0" style="width:25%;">\
+                            <button onClick="reNum(this)" type="button" class="btn reNum" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></button>\
                         </div>\
                     </div>\
                     `)
@@ -154,8 +115,9 @@ to get the desired effect
                         linha.remove();
                         y--;
                     })
-                })
 
+                    $('.select2').select2();
+                })
             })
         </script>
     <?php } ?>
@@ -264,6 +226,89 @@ to get the desired effect
                     console.log(jqXHR);
                 });
         });
+
+                function addNum(t) {
+                    var txt = $('#totalDrk').text(); //total de drinks
+                    var num = $(t.parentNode.childNodes[3]).val();  // numero dentro do input
+                    var res = parseInt(txt) -  10; // resultado dos valores
+                    $('#totalDrk').text(res);
+
+                    somNum = $(t.parentNode.childNodes[3]).val();
+                    $(t.parentNode.childNodes[3]).val(parseInt(num) + 10);
+
+                    // var txt = $('#totalDrk').text();
+                    // var num = $(t.parentNode.childNodes[3]).val();
+                    // if (!num) {
+                    //     $(t.parentNode.childNodes[3]).val(0);
+                    // }
+                    // n = parseInt(num) + 10;
+                    // $(t.parentNode.childNodes[3]).val(n);
+                    // var res = parseInt(txt) - n;
+                    // $('#totalDrk').text(res);
+                    
+                }
+
+                function reNum(t) {
+                    var txt = $('#totalDrk').text(); //total de drinks
+                    var num = $(t.parentNode.childNodes[3]).val();  // numero dentro do input
+                    var res = parseInt(txt) +  10; // resultado dos valores
+                    
+
+                    somNum = $(t.parentNode.childNodes[3]).val();
+                    $(t.parentNode.childNodes[3]).val(parseInt(num) - 10);
+                    if (!num) {
+                        $(t.parentNode.childNodes[3]).val(0);
+                    }
+                    if (num < 10) {
+                        $(t.parentNode.childNodes[3]).val(0);
+                    } else {
+                        $('#totalDrk').text(res);
+                    }
+                    
+                }
+
+                
+
+                function change(t) {
+                    // var txt = $('#totalDrk').text(); //total de drinks
+                    var num = $(t).val();
+                    // console.log('txt', txt)
+                    // console.log('num', num)
+
+                    // calcula a diferenca dos inputs
+
+                    $(t).attr('old-value') = num
+
+                    var oldValue = $(t).defaultValue;
+                    var newValue = $(t).attr('data-val');
+
+
+                    console.log('oldValue', $(t))
+                    console.log('newValue', newValue)
+                    var resultSet = $(t).val() - parseInt( $('#totalDrk').text() )
+                    console.log('resultSet', $(t))
+                    if (  resultSet  > 0 ) {
+                        
+                        somaTotal(parseInt($(t).val()))
+                    } else {
+                        subTotal(parseInt($(t).val()))
+                        
+                    }
+                }
+
+                
+
+                function somaTotal(soma) {
+                    var res = parseInt($('#totalDrk').text()) + soma;
+                    $('#totalDrk').text(res);
+                    
+                }
+
+                function subTotal(sub) {
+                    var res = parseInt($('#totalDrk').text()) - sub;
+                    $('#totalDrk').text(res);
+                    
+                }
     </script>
 
 </body>
