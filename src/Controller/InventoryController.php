@@ -26,21 +26,24 @@ class InventoryController extends AppController
         $this->loadModel('Events');
 
         $events = $this->Events->find()
-        ->where(['status' => 1])
-        ->where(['id' => $id])
-        ->first();
+            ->where(['status' => 1])
+            ->where(['id' => $id])
+            ->first();
 
         $drinks = $this->Drinks->find()
-        ->where(['status' => 1])
-        ->toArray();
+            ->where(['status' => 1])
+            ->toArray();
 
         if ($this->request->is('post')) {
+
             $products = $this->request->getData('products');
             $number = $this->request->getData('number');
             $inventoriesTable = TableRegistry::getTableLocator()->get('Inventories');
             $inventories = $inventoriesTable->newEntity(
                 $this->request->getData()
             );
+
+            // dd($this->request->getData());
 
             $inventories->event = $id;
 
@@ -49,7 +52,7 @@ class InventoryController extends AppController
             $inventories->created_at = date('Y-m-d H:i:s');
             $inventories->updated_at = date('Y-m-d H:i:s');
 
-            
+
             $save = $inventoriesTable->save($inventories);
             if ($save) {
                 $this->Flash->success('Inventário do evento concluido!');
@@ -59,18 +62,24 @@ class InventoryController extends AppController
                 dd($inventories);
                 return $this->redirect(['action' => 'add']);
             }
-            
         }
         $this->set(compact('events', 'drinks'));
     }
 
     public function view($id = null)
     {
-    }
-
-    public function edit($id = null)
-    {
         if ($id != null) {
+
+            $this->loadModel('Events');
+            $events = $this->Events->find()
+                ->where(['status' => 1])
+                ->where(['id' => $id])
+                ->first();
+
+            $this->loadModel('Drinks');
+            $drinks = $this->Drinks->find()
+                ->where(['status' => 1])
+                ->toArray();
 
             $this->loadModel('Inventories');
 
@@ -86,6 +95,39 @@ class InventoryController extends AppController
             $this->Flash->error('Erro! Evento não existe.');
             return $this->redirect(['action' => 'index']);
         }
+        $this->set(compact('events', 'inventory', 'drinks'));
+    }
+
+    public function edit($id = null)
+    {
+        if ($id != null) {
+
+            $this->loadModel('Inventories');
+
+            $inventory = $this->Inventories->find()
+                ->where(['event' => $id])
+                ->first();
+
+            $this->loadModel('Events');
+            $events = $this->Events->find()
+                ->where(['status' => 1])
+                ->where(['id' => $id])
+                ->first();
+
+            $this->loadModel('Drinks');
+            $drinks = $this->Drinks->find()
+                ->where(['status' => 1])
+                ->toArray();
+
+
+            if ($inventory == null) {
+                return $this->redirect(['action' => 'add', $id]);
+            }
+        } else {
+            $this->Flash->error('Erro! Evento não existe.');
+            return $this->redirect(['action' => 'index']);
+        }
+        $this->set(compact('events', 'inventory', 'drinks'));
     }
 
     public function delete($id = null)
