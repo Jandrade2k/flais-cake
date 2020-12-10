@@ -197,6 +197,7 @@ to get the desired effect
                 }
             });
         });
+        $('[data-toggle="tooltip"]').tooltip()
         $('.select2').select2();
         $('.form_date').mask('00/00/00');
         $('.din').mask('000.000.000.000.000,00', {
