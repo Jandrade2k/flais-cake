@@ -36,7 +36,7 @@
     </div>
     <div class="card-footer">
         <button type="submit" class="btn btn-success">Salvar</button>
-        <a href="<?= $this->Url->build(['controller' => 'inventory', 'action' => 'index']); ?>" class="btn btn-danger">Cancelar</a>
+        <a href="<?= $this->Url->build(['controller' => 'events', 'action' => 'index']); ?>" class="btn btn-danger">Cancelar</a>
     </div>
     <?= $this->Form->end(); ?>
 </div>
