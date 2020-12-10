@@ -102,7 +102,7 @@ to get the desired effect
                         </select>\
                         <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">\
                             <button onClick="addNum(this)" type="button" class="btn addNum" style="margin:5px;"><i class="fas fa-plus-circle" style="width:20px; height:20px;"></i></button>\
-                            <input onChange="change(this)" class="form-control num" name="number[id][]" type="number" value="0" style="width:25%;">\
+                            <input onChange="change(this)" class="form-control num" name="number[id][]" type="number" value="0" style="width:25%;" disabled>\
                             <button onClick="reNum(this)" type="button" class="btn reNum" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></button>\
                         </div>\
                     </div>\
