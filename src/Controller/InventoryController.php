@@ -153,48 +153,63 @@ class InventoryController extends AppController
         $this->set(compact('events', 'inventory', 'drinks'));
     }
 
+    public function inventory($id = null)
+    {
+        if ($id !== null) {
+            $this->loadModel('Drinks');
+            $drinks = $this->Drinks->find()
+                ->where(['status' => 1])
+                ->toArray();
+
+            $this->loadModel('Inventories');
+            $inventory = $this->Inventories->find()
+                ->where(['event' => $id])
+                ->first();
+
+            $this->loadModel('Ingredients');
+            $ingredients = $this->Ingredients->find()
+            ->where(['status' => 1])
+            ->toArray();
+
+            $this->loadModel('Recipes');
+            $recipes = $this->Recipes->find()
+            ->where(['status' => 1])
+            ->toArray();
+
+            $this->set(compact('drinks', 'inventory', 'ingredients', 'recipes'));
+        }
+        
+    }
+
     public function delete($id = null)
     {
     }
 
     public function pdfGenerator()
     {
-        // instantiate and use the dompdf class
+
         $dompdf = new Dompdf();
         $options = $dompdf->getOptions();
-        $options = $dompdf->getOptions();
-        $dompdf = new Dompdf($options);
-
-        $htmlBody = '
-        <!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-   
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-
-    
-  </body>
-</html>
-        ';
-
-        $dompdf->loadHtml($htmlBody);
+        $options->setDefaultFont('Courier');
+        $options->setIsHtml5ParserEnabled(true);
+        $dompdf->setOptions($options);
+        $dompdf->loadHtml('
+        <html>
+            <head>
+            </head>
+            <body>
+                <h1>Dompdf</h1>
+            </body>
+        </html>
+        ');
 
         // (Optional) Setup the paper size and orientation
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->set_option('defaultFont', 'Sans-serif');
-        $dompdf->set_option('isHtml5ParserEnabled', true);
+        $dompdf->setPaper('A4', 'landscape');
 
         // Render the HTML as PDF
         $dompdf->render();
 
         // Output the generated PDF to Browser
-        $dompdf->stream();
+        $dompdf->stream('inventario.pdf');
     }
 }
