@@ -8,30 +8,81 @@
         </div>
         <div class="form-group">
             <?php
-            $arProd = json_decode($inventory->products);
-            $ingIds = [];
-            foreach ($ingredients as $ings) {
-                if (in_array($ings->id, $ingIds)) {
-                } else {
-                    array_push($ingIds, $ings->id);
-                }
-            }
-            $arIng = [];
-            foreach ($recipes as $recipe) {
-                if (in_array($recipe->drink_id, $arProd)) {
-                    foreach (json_decode($recipe->ing) as $ing) {
-                        array_push($arIng, $ing);
-                    }
-                    foreach ($arIng as $id) {
-                        if (in_array($id, $ingIds)) {
-                            foreach ($ingredients as $ings) {
-                                echo $ings->name;
-                                echo '<br>';
+            $products = json_decode($inventory->products);
+            $number = json_decode($inventory->number);
+
+            $todos_d_name = [];
+            $todos_qtd_d = [];
+            $todos_total_d = [];
+
+            $todos_g_name = [];
+            $todos_qtd_g = [];
+            $todos_total_g = [];
+
+            $z = 0;
+            foreach ($recipes as $key => $receita) {
+                $x = 0;
+                $y = 0;
+                if (in_array($receita->drink_id, $products)) {
+                    $ings = json_decode($receita->ing);
+                    $qtd_d = json_decode($receita->qtd_d);
+
+                    $guas = json_decode($receita->garrison);
+                    $qtd_g = json_decode($receita->qtd_g);
+                    foreach ($ingredients as $chave => $ingredient) {
+                        if (in_array($ingredient->id, $ings)) {
+                            // echo $ingredient->name;
+                            // echo $qtd_d[$x];
+                            // echo '<br>';
+                            if (in_array($ingredient->name, $todos_d_name)) {
+                                $indice = array_search($ingredient->name, $todos_d_name);
+
+                                $qtd_d[$x] *= $number[$z];
+                                $todos_qtd_d[$indice] += $qtd_d[$x];
+                            } else {
+                                array_push($todos_total_d, $ingredient->total);
+                                array_push($todos_d_name, $ingredient->name);
+                                $qtd_d[$x] *= $number[$z];
+                                array_push($todos_qtd_d, $qtd_d[$x]);
                             }
+                            $x++;
+                        }
+                        if (in_array($ingredient->id, $guas)) {
+                            // echo $ingredient->name;
+                            // echo $qtd_g[$y];
+                            // echo '<br>';
+                            if (in_array($ingredient->name, $todos_g_name)) {
+                                $indice = array_search($ingredient->name, $todos_g_name);
+
+                                $qtd_g[$y] *= $number[$z];
+                                $todos_qtd_g[$indice] += $qtd_g[$y];
+                            } else {
+                                array_push($todos_total_g, $ingredient->total);
+                                array_push($todos_g_name, $ingredient->name);
+                                $qtd_g[$y] *= $number[$z];
+                                array_push($todos_qtd_g, $qtd_g[$y]);
+                            }
+                            $y++;
                         }
                     }
+                    $z++;
                 }
             }
+            foreach($todos_d_name as $chave => $ing) {
+                echo $ing;
+                echo ': ';
+                $total = ceil(($todos_qtd_d[$chave]/$todos_total_d[$chave]));
+                echo $total;
+                echo '<br>';
+            }
+            foreach($todos_g_name as $chave => $gua) {
+                echo $gua;
+                echo ': ';
+                $total = ceil(($todos_qtd_g[$chave]/$todos_total_g[$chave]));
+                echo $total;
+                echo '<br>';
+            }
+
             ?>
         </div>
     </div>
