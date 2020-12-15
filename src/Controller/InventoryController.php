@@ -3,6 +3,8 @@
 
 namespace App\Controller;
 
+// require_once 'vendor/autoload.php';
+
 use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
@@ -189,19 +191,10 @@ class InventoryController extends AppController
     {
 
         $dompdf = new Dompdf();
-        $options = $dompdf->getOptions();
-        $options->setDefaultFont('Courier');
-        $options->setIsHtml5ParserEnabled(true);
-        $dompdf->setOptions($options);
-        $dompdf->loadHtml('
-        <html>
-            <head>
-            </head>
-            <body>
-                <h1>Dompdf</h1>
-            </body>
-        </html>
-        ');
+
+        $html = file_get_contents('example.html');
+
+        $dompdf->loadHtml($html);
 
         // (Optional) Setup the paper size and orientation
         $dompdf->setPaper('A4', 'landscape');
@@ -210,6 +203,6 @@ class InventoryController extends AppController
         $dompdf->render();
 
         // Output the generated PDF to Browser
-        $dompdf->stream('inventario.pdf');
+        $dompdf->stream();
     }
 }

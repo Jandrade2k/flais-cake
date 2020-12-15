@@ -7,7 +7,7 @@
 <?= $this->Flash->render(); ?>
 <div class="card card-outline card-secondary" style="margin:20px;">
     <div class="card-body">
-                <table id="example1" class="table table-bordered table-hover">
+                <table id="example1" class="datatable table table-bordered table-hover">
                         <thead>
                             <tr role="row">
                                 <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 210px;">Código do Evento</th>

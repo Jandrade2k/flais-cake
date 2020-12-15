@@ -4,7 +4,8 @@
     </div>
     <div class="card-body">
         <div class="form-group">
-            <label>Itens a serem levados</label>
+        <img src="<?= $this->request->getAttribute('webroot'); ?>img/flairs logo.png" style="width:15%; height:15%;"/>
+        <label>Inventário</label>
         </div>
         <div class="form-group">
             <?php
@@ -67,23 +68,45 @@
                     }
                     $z++;
                 }
-            }
-            foreach($todos_d_name as $chave => $ing) {
-                echo $ing;
-                echo ': ';
-                $total = ceil(($todos_qtd_d[$chave]/$todos_total_d[$chave]));
-                echo $total;
-                echo '<br>';
-            }
-            foreach($todos_g_name as $chave => $gua) {
-                echo $gua;
-                echo ': ';
-                $total = ceil(($todos_qtd_g[$chave]/$todos_total_g[$chave]));
-                echo $total;
-                echo '<br>';
-            }
-
-            ?>
+            } ?>
+            <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6"></div>
+                    <div class="col-sm-12 col-md-6"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="example1" class="table table-bordered table-hover">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 270px;">Nome</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 240px;">Quantidade a levar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($todos_d_name as $chave => $ing) {
+                                    $total = ceil(($todos_qtd_d[$chave] / $todos_total_d[$chave]));
+                                ?>
+                                    <tr role="row" class="odd">
+                                        <td class="sorting_1"><?= $ing ?></td>
+                                        <td><?= $total ?></td>
+                                    </tr>
+                                <?php } 
+                                foreach ($todos_g_name as $chave => $gua) {
+                                    $total = ceil(($todos_qtd_g[$chave] / $todos_total_g[$chave]));
+                                ?>
+                                    <tr role="row" class="odd">
+                                        <td class="sorting_1"><?= $gua ?></td>
+                                        <td><?= $total ?></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     </div>
     <div class="card-footer">

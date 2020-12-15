@@ -8,7 +8,7 @@
 <div class="card card-outline card-secondary" style="margin:20px;">
 
     <div class="card-body">
-        <table class="table table-bordered table-hover">
+        <table class="datatable table table-bordered table-hover">
             <thead>
                 <tr>
                     <th style="width:20%">Nome</th>

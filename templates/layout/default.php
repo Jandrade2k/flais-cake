@@ -186,7 +186,7 @@ to get the desired effect
 
     <script>
         $(function() {
-            $(".table").DataTable({
+            $(".datatable").DataTable({
                 "responsive": true,
                 "autoWidth": false,
                 "ordering": true,
