@@ -168,7 +168,7 @@
             </div>
         </div>
         <div class="form-group" style="margin: 0 5px; width:30%">
-            <input name="drinks_guests" type="hidden" class="form-control" id="exampleInputPassword1" value="5.00">
+            <input name="drinks_guests" type="hidden" class="form-control" id="exampleInputPassword1" value="10.00">
         </div>
 
 

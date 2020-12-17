@@ -1,11 +1,8 @@
 <div class="card card-outline card-secondary" style="margin:20px;">
-    <div class="card-header">
-        <h3>Inventário</h3>
-    </div>
     <div class="card-body">
         <div class="form-group">
-        <img src="<?= $this->request->getAttribute('webroot'); ?>img/flairs logo.png" style="width:15%; height:15%;"/>
-        <label>Inventário</label>
+            <img src="<?= $this->request->getAttribute('webroot'); ?>img/flairs logo.png" style="width:15%; height:15%;" />
+            <label>Inventário</label>
         </div>
         <div class="form-group">
             <?php
@@ -15,10 +12,12 @@
             $todos_d_name = [];
             $todos_qtd_d = [];
             $todos_total_d = [];
+            $todos_medida_d = [];
 
             $todos_g_name = [];
             $todos_qtd_g = [];
             $todos_total_g = [];
+            $todos_medida_g = [];
 
             $z = 0;
             foreach ($recipes as $key => $receita) {
@@ -41,6 +40,7 @@
                                 $qtd_d[$x] *= $number[$z];
                                 $todos_qtd_d[$indice] += $qtd_d[$x];
                             } else {
+                                array_push($todos_medida_d, $ingredient->measures);
                                 array_push($todos_total_d, $ingredient->total);
                                 array_push($todos_d_name, $ingredient->name);
                                 $qtd_d[$x] *= $number[$z];
@@ -58,6 +58,7 @@
                                 $qtd_g[$y] *= $number[$z];
                                 $todos_qtd_g[$indice] += $qtd_g[$y];
                             } else {
+                                array_push($todos_medida_g, $ingredient->measures);
                                 array_push($todos_total_g, $ingredient->total);
                                 array_push($todos_g_name, $ingredient->name);
                                 $qtd_g[$y] *= $number[$z];
@@ -79,8 +80,9 @@
                         <table id="example1" class="table table-bordered table-hover">
                             <thead>
                                 <tr role="row">
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 270px;">Nome</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 240px;">Quantidade a levar</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 270px;">Ingrediente</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 240px;">Quantidade de unidade</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="seila" style="width: 240px;">Quantidade total</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -91,24 +93,31 @@
                                     <tr role="row" class="odd">
                                         <td class="sorting_1"><?= $ing ?></td>
                                         <td><?= $total ?></td>
+                                        <td><?=$todos_qtd_d[$chave] . ' ' . $todos_medida_d[$chave] ?></td>
                                     </tr>
-                                <?php } 
+                                <?php }
                                 foreach ($todos_g_name as $chave => $gua) {
                                     $total = ceil(($todos_qtd_g[$chave] / $todos_total_g[$chave]));
                                 ?>
                                     <tr role="row" class="odd">
                                         <td class="sorting_1"><?= $gua ?></td>
                                         <td><?= $total ?></td>
+                                        <td><?=$todos_qtd_g[$chave] . ' ' . $todos_medida_g[$chave] ?></td>
                                     </tr>
                                 <?php } ?>
+                                    <!-- <tr role="row" class="odd">
+                                        <td class="sorting_1"> </td>
+                                    </tr> -->
                             </tbody>
                         </table>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
     <div class="card-footer">
+        <a href="<?= $this->Url->build(['controller' => 'inventory', 'action' => 'edit', $inventory->id]); ?>" class="btn btn-info">Editar</a>
+        <a href="<?= $this->Url->build(['controller' => 'events', 'action' => 'index']); ?>" class="btn btn-danger">Voltar</a>
     </div>
 </div>

@@ -108,7 +108,7 @@ class InventoryController extends AppController
             $this->loadModel('Inventories');
 
             $inventory = $this->Inventories->find()
-                ->where(['event' => $id])
+                ->where(['id' => $id])
                 ->first();
 
             $this->loadModel('Events');
@@ -121,7 +121,6 @@ class InventoryController extends AppController
             $drinks = $this->Drinks->find()
                 ->where(['status' => 1])
                 ->toArray();
-
 
             if ($inventory == null) {
                 return $this->redirect(['action' => 'add', $id]);
