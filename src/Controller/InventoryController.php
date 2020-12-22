@@ -169,17 +169,16 @@ class InventoryController extends AppController
 
             $this->loadModel('Ingredients');
             $ingredients = $this->Ingredients->find()
-            ->where(['status' => 1])
-            ->toArray();
+                ->where(['status' => 1])
+                ->toArray();
 
             $this->loadModel('Recipes');
             $recipes = $this->Recipes->find()
-            ->where(['status' => 1])
-            ->toArray();
+                ->where(['status' => 1])
+                ->toArray();
 
             $this->set(compact('drinks', 'inventory', 'ingredients', 'recipes'));
         }
-        
     }
 
     public function delete($id = null)
@@ -203,5 +202,16 @@ class InventoryController extends AppController
 
         // Output the generated PDF to Browser
         $dompdf->stream();
+    }
+
+    public function excel()
+    {
+        $this->response = $this->response->withDownload('inventario.csv');
+        $this->loadModel('Inventories');
+        $in = $this->Inventories->find('all');
+        $_serialize = 'in';
+
+        $this->viewBuilder()->setClassName('CsvView.Csv');
+        $this->set(compact('in', '_serialize'));
     }
 }
