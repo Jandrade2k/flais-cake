@@ -42,7 +42,7 @@
     <div class="card-footer">
         <a href="<?= $this->Url->build(['controller' => 'inventory', 'action' => 'edit', $inventory->event]); ?>" class="btn btn-info">Editar</a>
         <a href="<?= $this->Url->build(['controller' => 'events', 'action' => 'index']); ?>" class="btn btn-danger">Voltar</a>
-        <a data-toggle="tooltip" data-placement="bottom" title="Gerar PDF" href="<?= $this->Url->build(['action' => 'excel']); ?>" class="btn btn-warning"><i class="far fa-file-pdf"></i></a>
+        <a data-toggle="tooltip" data-placement="bottom" title="Gerar PDF" href="<?= $this->Url->build(['action' => 'pdf'])?>" class="btn btn-warning"><i class="far fa-file-pdf"></i></a>
     </div>
     <?= $this->Form->end(); ?>
 </div>

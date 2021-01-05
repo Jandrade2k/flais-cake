@@ -185,23 +185,22 @@ class InventoryController extends AppController
     {
     }
 
-    public function pdfGenerator()
+    public function pdf($id = null)
     {
-
-        $dompdf = new Dompdf();
-
-        $html = file_get_contents('example.html');
-
-        $dompdf->loadHtml($html);
-
-        // (Optional) Setup the paper size and orientation
-        $dompdf->setPaper('A4', 'landscape');
-
-        // Render the HTML as PDF
-        $dompdf->render();
-
-        // Output the generated PDF to Browser
-        $dompdf->stream();
+        $this->loadModel('Inventories');
+        $this->viewBuilder()->enableAutoLayout(false);
+        $report = $this->Inventories->find()
+        ->first();
+        $this->viewBuilder()->setClassName('CakePdf.pdf');
+        $this->viewBuilder()->setOption(
+            'pdfConfig',
+            [
+                'orientation' => 'portrait',
+                'download' => true, // This can be omitted if "filename" is specified.
+                'filename' => 'Report_' . $id . '.pdf' //// This can be omitted if you want file name based on URL.
+            ]
+        );
+        $this->set('report', $report);
     }
 
     public function excel()

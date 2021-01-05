@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a4bcef1d13d550d2e68ca82a5f17f81b",
+    "content-hash": "2644d173f7470d54b6bc8cb03159fc32",
     "packages": [
         {
             "name": "aura/intl",
@@ -477,16 +477,16 @@
         },
         {
             "name": "friendsofcake/cakepdf",
-            "version": "4.0.0",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfCake/CakePdf.git",
-                "reference": "9581c785e7df6e23a3716f21032b219667e49881"
+                "reference": "8146a19ad6355869a1c16322c7efbc5ae700ece5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfCake/CakePdf/zipball/9581c785e7df6e23a3716f21032b219667e49881",
-                "reference": "9581c785e7df6e23a3716f21032b219667e49881",
+                "url": "https://api.github.com/repos/FriendsOfCake/CakePdf/zipball/8146a19ad6355869a1c16322c7efbc5ae700ece5",
+                "reference": "8146a19ad6355869a1c16322c7efbc5ae700ece5",
                 "shasum": ""
             },
             "require": {
@@ -496,9 +496,10 @@
                 "ceeram/cakepdf": "self.version"
             },
             "require-dev": {
-                "dompdf/dompdf": "^0.8",
+                "cakephp/cakephp-codesniffer": "^4.2",
+                "dompdf/dompdf": "^0.8.6",
                 "mpdf/mpdf": "^8.0.4",
-                "phpunit/phpunit": "~8.5.0",
+                "phpunit/phpunit": "~8.5.0 || ^9.3",
                 "tecnickcom/tcpdf": "^6.3"
             },
             "suggest": {
@@ -520,9 +521,9 @@
             "homepage": "http://github.com/friendsofcake/CakePdf",
             "support": {
                 "issues": "https://github.com/FriendsOfCake/CakePdf/issues",
-                "source": "https://github.com/FriendsOfCake/CakePdf/tree/master"
+                "source": "https://github.com/FriendsOfCake/CakePdf/tree/4.1.1"
             },
-            "time": "2020-07-10T08:52:09+00:00"
+            "time": "2020-12-26T17:30:21+00:00"
         },
         {
             "name": "friendsofcake/cakephp-csvview",
