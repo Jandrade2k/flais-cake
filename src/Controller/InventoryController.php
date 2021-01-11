@@ -187,20 +187,44 @@ class InventoryController extends AppController
 
     public function pdf($id = null)
     {
-        $this->loadModel('Inventories');
-        $this->viewBuilder()->enableAutoLayout(false);
-        $report = $this->Inventories->find()
-        ->first();
-        $this->viewBuilder()->setClassName('CakePdf.pdf');
-        $this->viewBuilder()->setOption(
-            'pdfConfig',
-            [
-                'orientation' => 'portrait',
-                'download' => true, // This can be omitted if "filename" is specified.
-                'filename' => 'Report_' . $id . '.pdf' //// This can be omitted if you want file name based on URL.
-            ]
-        );
-        $this->set('report', $report);
+        if ($id !== null) {
+            $this->loadModel('Events');
+            $events = $this->Events->find()
+            ->where(['id' => $id])
+            ->first();
+
+            $this->loadModel('Drinks');
+            $drinks = $this->Drinks->find()
+                ->where(['status' => 1])
+                ->toArray();
+
+            $this->loadModel('Inventories');
+            $inventory = $this->Inventories->find()
+                ->where(['event' => $id])
+                ->first();
+
+            $this->loadModel('Ingredients');
+            $ingredients = $this->Ingredients->find()
+                ->where(['status' => 1])
+                ->toArray();
+
+            $this->loadModel('Recipes');
+            $recipes = $this->Recipes->find()
+                ->where(['status' => 1])
+                ->toArray();
+
+                $html = "";
+            $this->viewBuilder()->setClassName('CakePdf.pdf');
+            $this->viewBuilder()->setOption(
+                'pdfConfig',
+                [
+                    'orientation' => 'portrait',
+                    'download' => false, // This can be omitted if "filename" is specified.
+                    'filename' => 'Report_' . $id . '.pdf' //// This can be omitted if you want file name based on URL.
+                ]
+            );
+            $this->set(compact('drinks', 'inventory', 'ingredients', 'recipes', 'events'));
+        }
     }
 
     public function excel()
