@@ -60,6 +60,12 @@
               <p>Inventário</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?= $this->Url->build(['controller'=>'week', 'action' => 'index']); ?>" class="nav-link">
+            <i class="fas fa-calendar-week"></i>
+              <p>Eventos da semana</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
