@@ -21,9 +21,9 @@
             </td>
             <td>
               <div class="btn-group">
-                <a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'view', $el->id]); ?>" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                <a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'edit', $el->id]); ?>" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
-                <button data-toggle="modal" data-target="#modal-danger_<?= $el->id; ?>" type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                <a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'view', $el->id]); ?>" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Visualizar"><i class="fas fa-eye"></i></a>
+                <a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'edit', $el->id]); ?>" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fas fa-pen"></i></a>
+                <button data-toggle="modal" data-target="#modal-danger_<?= $el->id; ?>" type="button" class="btn btn-danger"><i class="fas fa-trash" data-toggle="tooltip" data-placement="bottom" title="Excluir"></i></button>
               </div>
             </td>
           </tr>
