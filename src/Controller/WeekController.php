@@ -20,7 +20,7 @@ class WeekController extends AppController
 
         $data_i = $carbon::now();
 
-        $events = [];
+        $event = [];
 
         for ($i = 0; $i < 8; $i++) {
             $data_f = $carbon::now()->addDays($i);
@@ -29,11 +29,9 @@ class WeekController extends AppController
                 ->where(['event_date' => $data_f->format('d/m/y')])
                 ->toArray();
                 foreach($temp as $key => $value) {
-                    array_push($events, $value);
+                    array_push($event, $value);
                 }
         }
-
-        dd($events);
-        $this->set(compact('events'));
+        $this->set(compact('event'));
     }
 }
