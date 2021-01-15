@@ -21,6 +21,7 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>plugins/datepicker/css/bootstrap-datepicker.standalone.css">
     <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>css/global.css">
 </head>
 <!--
@@ -84,6 +85,14 @@ to get the desired effect
     <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datepicker/js/bootstrap-datepicker.js"></script>
+
+    <script>
+        $('.input-daterange').datepicker({
+            format: 'dd/mm/yyyy',
+            startDate: '-1d'
+        });
+    </script>
 
     <?php if (($this->request->getParam('controller') == 'Inventory' && $this->request->getParam('action') == 'add') || $this->request->getParam('controller') == 'Inventory' && $this->request->getParam('action') == 'edit') { ?>
         <script>
@@ -228,88 +237,88 @@ to get the desired effect
                 });
         });
 
-                function addNum(t) {
-                    var txt = $('#totalDrk').text(); //total de drinks
-                    var num = $(t.parentNode.childNodes[3]).val();  // numero dentro do input
-                    var res = parseInt(txt) -  10; // resultado dos valores
-                    $('#totalDrk').text(res);
+        function addNum(t) {
+            var txt = $('#totalDrk').text(); //total de drinks
+            var num = $(t.parentNode.childNodes[3]).val(); // numero dentro do input
+            var res = parseInt(txt) - 10; // resultado dos valores
+            $('#totalDrk').text(res);
 
-                    somNum = $(t.parentNode.childNodes[3]).val();
-                    $(t.parentNode.childNodes[3]).val(parseInt(num) + 10);
+            somNum = $(t.parentNode.childNodes[3]).val();
+            $(t.parentNode.childNodes[3]).val(parseInt(num) + 10);
 
-                    // var txt = $('#totalDrk').text();
-                    // var num = $(t.parentNode.childNodes[3]).val();
-                    // if (!num) {
-                    //     $(t.parentNode.childNodes[3]).val(0);
-                    // }
-                    // n = parseInt(num) + 10;
-                    // $(t.parentNode.childNodes[3]).val(n);
-                    // var res = parseInt(txt) - n;
-                    // $('#totalDrk').text(res);
-                    
-                }
+            // var txt = $('#totalDrk').text();
+            // var num = $(t.parentNode.childNodes[3]).val();
+            // if (!num) {
+            //     $(t.parentNode.childNodes[3]).val(0);
+            // }
+            // n = parseInt(num) + 10;
+            // $(t.parentNode.childNodes[3]).val(n);
+            // var res = parseInt(txt) - n;
+            // $('#totalDrk').text(res);
 
-                function reNum(t) {
-                    var txt = $('#totalDrk').text(); //total de drinks
-                    var num = $(t.parentNode.childNodes[3]).val();  // numero dentro do input
-                    var res = parseInt(txt) +  10; // resultado dos valores
-                    
+        }
 
-                    somNum = $(t.parentNode.childNodes[3]).val();
-                    $(t.parentNode.childNodes[3]).val(parseInt(num) - 10);
-                    if (!num) {
-                        $(t.parentNode.childNodes[3]).val(0);
-                    }
-                    if (num < 10) {
-                        $(t.parentNode.childNodes[3]).val(0);
-                    } else {
-                        $('#totalDrk').text(res);
-                    }
-                    
-                }
-
-                
-
-                function change(t) {
-                    // var txt = $('#totalDrk').text(); //total de drinks
-                    var num = $(t).val();
-                    // console.log('txt', txt)
-                    // console.log('num', num)
-
-                    // calcula a diferenca dos inputs
-
-                    $(t).attr('old-value') = num
-
-                    var oldValue = $(t).defaultValue;
-                    var newValue = $(t).attr('data-val');
+        function reNum(t) {
+            var txt = $('#totalDrk').text(); //total de drinks
+            var num = $(t.parentNode.childNodes[3]).val(); // numero dentro do input
+            var res = parseInt(txt) + 10; // resultado dos valores
 
 
-                    console.log('oldValue', $(t))
-                    console.log('newValue', newValue)
-                    var resultSet = $(t).val() - parseInt( $('#totalDrk').text() )
-                    console.log('resultSet', $(t))
-                    if (  resultSet  > 0 ) {
-                        
-                        somaTotal(parseInt($(t).val()))
-                    } else {
-                        subTotal(parseInt($(t).val()))
-                        
-                    }
-                }
+            somNum = $(t.parentNode.childNodes[3]).val();
+            $(t.parentNode.childNodes[3]).val(parseInt(num) - 10);
+            if (!num) {
+                $(t.parentNode.childNodes[3]).val(0);
+            }
+            if (num < 10) {
+                $(t.parentNode.childNodes[3]).val(0);
+            } else {
+                $('#totalDrk').text(res);
+            }
 
-                
+        }
 
-                function somaTotal(soma) {
-                    var res = parseInt($('#totalDrk').text()) + soma;
-                    $('#totalDrk').text(res);
-                    
-                }
 
-                function subTotal(sub) {
-                    var res = parseInt($('#totalDrk').text()) - sub;
-                    $('#totalDrk').text(res);
-                    
-                }
+
+        function change(t) {
+            // var txt = $('#totalDrk').text(); //total de drinks
+            var num = $(t).val();
+            // console.log('txt', txt)
+            // console.log('num', num)
+
+            // calcula a diferenca dos inputs
+
+            $(t).attr('old-value') = num
+
+            var oldValue = $(t).defaultValue;
+            var newValue = $(t).attr('data-val');
+
+
+            console.log('oldValue', $(t))
+            console.log('newValue', newValue)
+            var resultSet = $(t).val() - parseInt($('#totalDrk').text())
+            console.log('resultSet', $(t))
+            if (resultSet > 0) {
+
+                somaTotal(parseInt($(t).val()))
+            } else {
+                subTotal(parseInt($(t).val()))
+
+            }
+        }
+
+
+
+        function somaTotal(soma) {
+            var res = parseInt($('#totalDrk').text()) + soma;
+            $('#totalDrk').text(res);
+
+        }
+
+        function subTotal(sub) {
+            var res = parseInt($('#totalDrk').text()) - sub;
+            $('#totalDrk').text(res);
+
+        }
     </script>
 
 </body>

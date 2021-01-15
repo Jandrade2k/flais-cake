@@ -190,8 +190,8 @@ class InventoryController extends AppController
         if ($id !== null) {
             $this->loadModel('Events');
             $events = $this->Events->find()
-            ->where(['id' => $id])
-            ->first();
+                ->where(['id' => $id])
+                ->first();
 
             $this->loadModel('Drinks');
             $drinks = $this->Drinks->find()
@@ -213,16 +213,19 @@ class InventoryController extends AppController
                 ->where(['status' => 1])
                 ->toArray();
 
-                $html = "";
-            $this->viewBuilder()->setClassName('CakePdf.pdf');
+            $html = "";
+
+            $this->viewBuilder()->enableAutoLayout(false);
+            $this->viewBuilder()->setClassName('Cake');
             $this->viewBuilder()->setOption(
                 'pdfConfig',
                 [
                     'orientation' => 'portrait',
-                    'download' => false, // This can be omitted if "filename" is specified.
-                    'filename' => 'Report_' . $id . '.pdf' //// This can be omitted if you want file name based on URL.
+                    'download' => true, // This can be omitted if "filename" is specified.
+                    'filename' => 'Inventario_' . $events->id . '.pdf' //// This can be omitted if you want file name based on URL.
                 ]
             );
+
             $this->set(compact('drinks', 'inventory', 'ingredients', 'recipes', 'events'));
         }
     }

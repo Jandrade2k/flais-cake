@@ -1,6 +1,11 @@
 <?= $this->Flash->render(); ?>
 <div class="card card-outline card-secondary" style="margin:20px;">
     <div class="card-body">
+        <div class="input-daterange input-group" id="datepicker">
+            <input type="text" class="input-sm form-control" name="start" />
+            <span class="input-group-addon">até</span>
+            <input type="text" class="input-sm form-control" name="end" />
+        </div>
         <table id="example1" class="datatable table table-bordered table-hover">
             <thead>
                 <tr role="row">
@@ -25,7 +30,7 @@
                                 <a href="<?= $this->Url->build(['controller' => 'events', 'action' => 'view', $el->id]); ?>" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Visualizar"><i class="fas fa-eye"></i></a>
                                 <a href="<?= $this->Url->build(['controller' => 'events', 'action' => 'edit', $el->id]); ?>" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fas fa-pen"></i></a>
                                 <a href="<?= $this->Url->build(['controller' => 'inventory', 'action' => 'view', $el->id]); ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Ver inventário"><i class="fas fa-box"></i></a>
-                                <button data-toggle="modal" data-target="#modal-danger_<?= $el->id; ?>" type="button" class="btn btn-danger" ><i class="fas fa-trash" data-toggle="tooltip" data-placement="bottom" title="Excluir"></i></button>
+                                <button data-toggle="modal" data-target="#modal-danger_<?= $el->id; ?>" type="button" class="btn btn-danger"><i class="fas fa-trash" data-toggle="tooltip" data-placement="bottom" title="Excluir"></i></button>
                             </div>
                         </td>
                     </tr>
