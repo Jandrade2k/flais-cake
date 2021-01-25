@@ -61,8 +61,8 @@ class CustomersFixture extends TestFixture
                 'uf' => 'Lo',
                 'email' => 'Lorem ipsum dolor sit amet',
                 'status' => 1,
-                'created_at' => '2021-01-22 18:02:18',
-                'updated_at' => '2021-01-22 18:02:18',
+                'created_at' => '2021-01-25 18:39:14',
+                'updated_at' => '2021-01-25 18:39:14',
             ],
         ];
         parent::init();

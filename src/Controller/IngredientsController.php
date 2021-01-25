@@ -38,9 +38,12 @@ class IngredientsController extends AppController
 
             $ingredient->category = $this->request->getData('category');
 
+            $ingredient->price = $this->request->getData('price');
+
             $ingredient->status = 1;
             $ingredient->created_at = date('Y-m-d H:i:s');
             $ingredient->updated_at = date('Y-m-d H:i:s');
+
 
             if ($ingredientTable->save($ingredient)) {
                 $this->Flash->success('Ingrediente salvo com sucesso.');
@@ -98,6 +101,7 @@ class IngredientsController extends AppController
                 $this->request->getData()
             );
 
+            $ingredient->price = $this->request->getData('price');
             $ingredient->updated_at = date('Y-m-d H:i:s');
 
             // dd($customer);

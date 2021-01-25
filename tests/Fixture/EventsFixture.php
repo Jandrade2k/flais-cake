@@ -39,6 +39,12 @@ class EventsFixture extends TestFixture
         'created_at' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => null, 'comment' => ''],
         'updated_at' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => false, 'default' => null, 'comment' => ''],
         'drinks_guests' => ['type' => 'float', 'length' => null, 'precision' => null, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => ''],
+        'vodka_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'whisky_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'gin_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'aperol_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'vinho_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'espumante_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_indexes' => [
             'tipo_id' => ['type' => 'index', 'columns' => ['tipo_id'], 'length' => []],
             'proposal' => ['type' => 'index', 'columns' => ['porposal_id'], 'length' => []],
@@ -46,9 +52,9 @@ class EventsFixture extends TestFixture
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
+            'customer' => ['type' => 'foreign', 'columns' => ['customer_id'], 'references' => ['customers', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
             'tipo_id' => ['type' => 'foreign', 'columns' => ['tipo_id'], 'references' => ['events_tipos', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
             'proposal' => ['type' => 'foreign', 'columns' => ['porposal_id'], 'references' => ['proposal', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
-            'customer' => ['type' => 'foreign', 'columns' => ['customer_id'], 'references' => ['customers', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -84,9 +90,15 @@ class EventsFixture extends TestFixture
                 'qtd_bar' => 1,
                 'customer_id' => 1,
                 'status' => 1,
-                'created_at' => '2021-01-22 18:02:18',
-                'updated_at' => '2021-01-22 18:02:18',
+                'created_at' => '2021-01-25 18:39:15',
+                'updated_at' => '2021-01-25 18:39:15',
                 'drinks_guests' => 1,
+                'vodka_id' => 1,
+                'whisky_id' => 1,
+                'gin_id' => 1,
+                'aperol_id' => 1,
+                'vinho_id' => 1,
+                'espumante_id' => 1,
             ],
         ];
         parent::init();

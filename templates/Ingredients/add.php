@@ -40,6 +40,17 @@
             <label for="exampleInputName1">Total unidade</label>
             <input name="total" type="text" class="form-control" id="exampleInputEmail1" placeholder="Total unidade">
         </div>
+        <div class="form-group">
+            <label for="exampleInputUnit1">Preço produto</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fas fa-dollar-sign"></i>
+                    </span>
+                </div>
+                <input name="price" type="text" class="form-control din">
+            </div>
+        </div>
     </div>
     <!-- /.card-body -->
 

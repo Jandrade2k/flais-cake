@@ -52,8 +52,8 @@ class DrinksFixture extends TestFixture
                 'tipo_id' => 1,
                 'image' => 'Lorem ipsum dolor sit amet',
                 'status' => 1,
-                'created_at' => '2021-01-22 18:02:18',
-                'updated_at' => '2021-01-22 18:02:18',
+                'created_at' => '2021-01-25 18:39:15',
+                'updated_at' => '2021-01-25 18:39:15',
                 'link' => 'Lorem ipsum dolor sit amet',
             ],
         ];

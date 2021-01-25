@@ -14,6 +14,12 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\EventsTiposTable&\Cake\ORM\Association\BelongsTo $EventsTipos
  * @property \App\Model\Table\ProposalTable&\Cake\ORM\Association\BelongsTo $Proposal
  * @property \App\Model\Table\CustomersTable&\Cake\ORM\Association\BelongsTo $Customers
+ * @property \App\Model\Table\VodkasTable&\Cake\ORM\Association\BelongsTo $Vodkas
+ * @property \App\Model\Table\WhiskiesTable&\Cake\ORM\Association\BelongsTo $Whiskies
+ * @property \App\Model\Table\GinsTable&\Cake\ORM\Association\BelongsTo $Gins
+ * @property \App\Model\Table\AperolsTable&\Cake\ORM\Association\BelongsTo $Aperols
+ * @property \App\Model\Table\VinhosTable&\Cake\ORM\Association\BelongsTo $Vinhos
+ * @property \App\Model\Table\EspumantesTable&\Cake\ORM\Association\BelongsTo $Espumantes
  *
  * @method \App\Model\Entity\Event newEmptyEntity()
  * @method \App\Model\Entity\Event newEntity(array $data, array $options = [])
@@ -55,6 +61,30 @@ class EventsTable extends Table
         ]);
         $this->belongsTo('Customers', [
             'foreignKey' => 'customer_id',
+            'joinType' => 'INNER',
+        ]);
+        $this->belongsTo('Vodkas', [
+            'foreignKey' => 'vodka_id',
+            'joinType' => 'INNER',
+        ]);
+        $this->belongsTo('Whiskies', [
+            'foreignKey' => 'whisky_id',
+            'joinType' => 'INNER',
+        ]);
+        $this->belongsTo('Gins', [
+            'foreignKey' => 'gin_id',
+            'joinType' => 'INNER',
+        ]);
+        $this->belongsTo('Aperols', [
+            'foreignKey' => 'aperol_id',
+            'joinType' => 'INNER',
+        ]);
+        $this->belongsTo('Vinhos', [
+            'foreignKey' => 'vinho_id',
+            'joinType' => 'INNER',
+        ]);
+        $this->belongsTo('Espumantes', [
+            'foreignKey' => 'espumante_id',
             'joinType' => 'INNER',
         ]);
     }
@@ -177,6 +207,12 @@ class EventsTable extends Table
         $rules->add($rules->existsIn(['tipo_id'], 'EventsTipos'), ['errorField' => 'tipo_id']);
         $rules->add($rules->existsIn(['porposal_id'], 'Proposal'), ['errorField' => 'porposal_id']);
         $rules->add($rules->existsIn(['customer_id'], 'Customers'), ['errorField' => 'customer_id']);
+        $rules->add($rules->existsIn(['vodka_id'], 'Vodkas'), ['errorField' => 'vodka_id']);
+        $rules->add($rules->existsIn(['whisky_id'], 'Whiskies'), ['errorField' => 'whisky_id']);
+        $rules->add($rules->existsIn(['gin_id'], 'Gins'), ['errorField' => 'gin_id']);
+        $rules->add($rules->existsIn(['aperol_id'], 'Aperols'), ['errorField' => 'aperol_id']);
+        $rules->add($rules->existsIn(['vinho_id'], 'Vinhos'), ['errorField' => 'vinho_id']);
+        $rules->add($rules->existsIn(['espumante_id'], 'Espumantes'), ['errorField' => 'espumante_id']);
 
         return $rules;
     }

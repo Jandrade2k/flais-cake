@@ -32,6 +32,17 @@
                 <option <?= $ingredient->category == 6 ? 'selected' : '' ?> value="6">Espumante</option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="exampleInputUnit1">Preço produto</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fas fa-dollar-sign"></i>
+                    </span>
+                </div>
+                <input name="price" type="text" class="form-control din" value="<?= $ingredient->price ?>" disabled>
+            </div>
+        </div>
     </div>
     <!-- /.card-body -->
 

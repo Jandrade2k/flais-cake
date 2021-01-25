@@ -30,10 +30,22 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $updated_at
  * @property float|null $drinks_guests
+ * @property int $vodka_id
+ * @property int $whisky_id
+ * @property int $gin_id
+ * @property int $aperol_id
+ * @property int $vinho_id
+ * @property int $espumante_id
  *
  * @property \App\Model\Entity\EventsTipo $events_tipo
  * @property \App\Model\Entity\Proposal $proposal
  * @property \App\Model\Entity\Customer $customer
+ * @property \App\Model\Entity\Vodka $vodka
+ * @property \App\Model\Entity\Whisky $whisky
+ * @property \App\Model\Entity\Gin $gin
+ * @property \App\Model\Entity\Aperol $aperol
+ * @property \App\Model\Entity\Vinho $vinho
+ * @property \App\Model\Entity\Espumante $espumante
  */
 class Event extends Entity
 {
@@ -68,8 +80,20 @@ class Event extends Entity
         'created_at' => true,
         'updated_at' => true,
         'drinks_guests' => true,
+        'vodka_id' => true,
+        'whisky_id' => true,
+        'gin_id' => true,
+        'aperol_id' => true,
+        'vinho_id' => true,
+        'espumante_id' => true,
         'events_tipo' => true,
         'proposal' => true,
         'customer' => true,
+        'vodka' => true,
+        'whisky' => true,
+        'gin' => true,
+        'aperol' => true,
+        'vinho' => true,
+        'espumante' => true,
     ];
 }

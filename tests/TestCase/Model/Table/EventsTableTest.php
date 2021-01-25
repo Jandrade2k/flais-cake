@@ -28,6 +28,12 @@ class EventsTableTest extends TestCase
         'app.EventsTipos',
         'app.Proposal',
         'app.Customers',
+        'app.Vodkas',
+        'app.Whiskies',
+        'app.Gins',
+        'app.Aperols',
+        'app.Vinhos',
+        'app.Espumantes',
     ];
 
     /**
