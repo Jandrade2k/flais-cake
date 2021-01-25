@@ -174,7 +174,7 @@
                 <select name="vodka_id" class="form-control" required>
                     <option selected disabled>Selecione uma vodka</option>
                     <?php
-                     foreach ($vodka as $el) { ?>
+                    foreach ($vodka as $el) { ?>
                         <option value="<?= $el->category ?>"><?= ucfirst($el->name) ?></option>
                     <?php } ?>
                 </select>
@@ -229,7 +229,7 @@
                     <?php } ?>
                 </select>
             </div>
-            
+
         </div>
         <div class="form-group" style="margin: 0 5px; width:30%">
             <input name="drinks_guests" type="hidden" class="form-control" id="exampleInputPassword1" value="10.00">
@@ -244,11 +244,11 @@
             <button type="submit" class="btn btn-success">Salvar</button>
             <a href="<?= $this->Url->build(['controller' => 'events', 'action' => 'index']); ?>" class="btn btn-danger">Cancelar</a>
         </div>
-        <div class="btn-group">
-            <button type="button" class="btn btn-info" style="cursor:default">Drinks por convidado</button>
-            <button type="button" class="btn btn-info" style="cursor:default">5,00</button>
+        <div class="form-group" style="margin: 0 5px; width:20%">
+            <label for="exampleInputUnit1">Drinks por convidado</label>
+            <div class="input-group">
+                <input name="drinks_guests" type="text" class="form-control din" placeholder="Drinks por convidado" value="5.00">
+            </div>
         </div>
+        <?= $this->Form->end(); ?>
     </div>
-</div>
-<?= $this->Form->end(); ?>
-</div>
