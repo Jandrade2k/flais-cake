@@ -92,6 +92,10 @@ class IngredientsTable extends Table
             ->requirePresence('total', 'create')
             ->notEmptyString('total');
 
+        $validator
+            ->integer('category')
+            ->allowEmptyString('category');
+
         return $validator;
     }
 }

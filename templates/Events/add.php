@@ -167,6 +167,70 @@
                 <input name="qtd_bar" type="number" class="form-control" id="exampleInputPassword1" placeholder="Quantidade de bares">
             </div>
         </div>
+
+        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+            <div class="form-group" style="margin: 0 5px; width:19%">
+                <label>Vodka</label>
+                <select name="vodka_id" class="form-control" required>
+                    <option selected disabled>Selecione uma vodka</option>
+                    <?php
+                     foreach ($vodka as $el) { ?>
+                        <option value="<?= $el->category ?>"><?= ucfirst($el->name) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin: 0 5px; width:19%">
+                <label>Whisky</label>
+                <select name="whisky_id" class="form-control" required>
+                    <option selected disabled>Selecione um whisky</option>
+                    <?php foreach ($whisky as $el) { ?>
+                        <option value="<?= $el->category ?>"><?= ucfirst($el->name) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin: 0 5px; width:19%">
+                <label>Gin</label>
+                <select name="gin_id" class="form-control" required>
+                    <option selected disabled>Selecione um gin</option>
+                    <?php foreach ($gin as $el) { ?>
+                        <option value="<?= $el->category ?>"><?= ucfirst($el->name) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin: 0 5px; width:19%">
+                <label>Aperol</label>
+                <select name="aperol_id" class="form-control" required>
+                    <option selected disabled>Selecione um aperol</option>
+                    <?php foreach ($aperol as $el) { ?>
+                        <option value="<?= $el->category ?>"><?= ucfirst($el->name) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin: 0 5px; width:19%">
+                <label>Vinho</label>
+                <select name="vinho_id" class="form-control" required>
+                    <option selected disabled>Selecione um vinho</option>
+                    <?php foreach ($vinho as $el) { ?>
+                        <option value="<?= $el->category ?>"><?= ucfirst($el->name) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin: 0 5px; width:19%">
+                <label>Espumante</label>
+                <select name="espumante_id" class="form-control" required>
+                    <option selected disabled>Selecione um espumante</option>
+                    <?php foreach ($espumante as $el) { ?>
+                        <option value="<?= $el->category ?>"><?= ucfirst($el->name) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            
+        </div>
         <div class="form-group" style="margin: 0 5px; width:30%">
             <input name="drinks_guests" type="hidden" class="form-control" id="exampleInputPassword1" value="10.00">
         </div>

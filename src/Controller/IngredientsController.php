@@ -36,6 +36,8 @@ class IngredientsController extends AppController
                 $this->request->getData()
             );
 
+            $ingredient->category = $this->request->getData('category');
+
             $ingredient->status = 1;
             $ingredient->created_at = date('Y-m-d H:i:s');
             $ingredient->updated_at = date('Y-m-d H:i:s');

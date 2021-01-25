@@ -38,6 +38,7 @@ class InventoriesTable extends Table
         parent::initialize($config);
 
         $this->setTable('inventories');
+        $this->setDisplayField('id');
         $this->setPrimaryKey('id');
     }
 
@@ -50,8 +51,9 @@ class InventoriesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-        ->integer('id')
-        ->allowEmptyString('id', null, 'create');
+            ->integer('id')
+            ->requirePresence('id', 'create')
+            ->notEmptyString('id');
 
         $validator
             ->integer('event')

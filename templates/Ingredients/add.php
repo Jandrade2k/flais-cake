@@ -14,9 +14,22 @@
             <label>Tipo de ingrediente</label>
             <select name="type" class="form-control" required>
                 <option selected disabled>Selecione um tipo</option>
-                    <option value="3">Ingrediente</option>
-                    <option value="2">Guarnição</option>
-                    <option value="1">Copo/Taça</option>
+                <option value="3">Ingrediente</option>
+                <option value="2">Guarnição</option>
+                <option value="1">Copo/Taça</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Tipo de bebida</label>
+            <select name="category" class="form-control" required>
+                <option selected disabled>Selecione um tipo</option>
+                <option value="0">Não é bebida</option>
+                <option value="1">Vodka</option>
+                <option value="2">Whisky</option>
+                <option value="3">Gin</option>
+                <option value="4">Aperol</option>
+                <option value="5">Vinho</option>
+                <option value="6">Espumante</option>
             </select>
         </div>
         <div class="form-group">

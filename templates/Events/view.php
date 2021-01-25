@@ -167,6 +167,68 @@
         <label for="exampleInputUnit1">Drinks por convidado</label>
         <button type="button" class="btn btn-block btn-primary" style="cursor:default">5,94</button>
         </div> -->
+        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+            <div class="form-group" style="margin: 0 5px; width:19%">
+                <label>Vodka</label>
+                <select name="vodka_id" class="form-control" value="<?= $event->vodka_id ?>" disabled>
+                    <option disabled>Selecione uma vodka</option>
+                    <?php foreach ($vodka as $el) { ?>
+                        <option <?= $el->id == $event->vodka_id ? 'selected' : '' ?> value="<?= $el->id ?>"><?= ucfirst($el->name) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin: 0 5px; width:19%">
+                <label>Whisky</label>
+                <select name="whisky_id" class="form-control" disabled>
+                    <option disabled>Selecione um whisky</option>
+                    <?php foreach ($whisky as $el) { ?>
+                        <option <?= $el->id == $event->whisky_id ? 'selected' : '' ?> value="<?= $el->id ?>"><?= ucfirst($el->name) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin: 0 5px; width:19%">
+                <label>Gin</label>
+                <select name="gin_id" class="form-control" disabled>
+                    <option disabled>Selecione um gin</option>
+                    <?php foreach ($gin as $el) { ?>
+                        <option <?= $el->id == $event->gin_id ? 'selected' : '' ?> value="<?= $el->id ?>"><?= ucfirst($el->name) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin: 0 5px; width:19%">
+                <label>Aperol</label>
+                <select name="aperol_id" class="form-control" disabled>
+                    <option disabled>Selecione um aperol</option>
+                    <?php foreach ($aperol as $el) { ?>
+                        <option <?= $el->id == $event->aperol_id ? 'selected' : '' ?> value="<?= $el->id ?>"><?= ucfirst($el->name) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin: 0 5px; width:19%">
+                <label>Vinho</label>
+                <select name="vinho_id" class="form-control" disabled>
+                    <option disabled>Selecione um vinho</option>
+                    <?php foreach ($vinho as $el) { ?>
+                        <option <?= $el->id == $event->vinho_id ? 'selected' : '' ?> value="<?= $el->id ?>"><?= ucfirst($el->name) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin: 0 5px; width:19%">
+                <label>Espumante</label>
+                <select name="espumante_id" class="form-control" disabled>
+                    <option disabled>Selecione um espumante</option>
+                    <?php foreach ($espumante as $el) { ?>
+                        <option <?= $el->id == $event->espumante_id ? 'selected' : '' ?> value="<?= $el->id ?>"><?= ucfirst($el->name) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            
+        </div>
 
     </div>
     <!-- /.card-body -->

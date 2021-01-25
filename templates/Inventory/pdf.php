@@ -362,7 +362,7 @@
   <title>PDF invantário</title>
 </head>
 
-<body id="content">
+<body id="content" class="content">
   <documento>
     <header>
       <img src="http://localhost/flairs_cake/img/flairs%20logo.png">
@@ -407,14 +407,20 @@
   <script src="<?= $this->request->getAttribute('webroot'); ?>plugins/jquery/jquery.min.js"></script>
   <script src="<?= $this->request->getAttribute('webroot'); ?>js/jspdf.umd.min.js"></script>
   <script>
-    const doc = new jsPDF({
-  orientation: "portrait",
-  unit: "in",
-  format: [2, 4]
+    var doc = new jspdf();
+var elementHTML = $('.content').html();
+var specialElementHandlers = {
+    '#elementH': function (element, renderer) {
+        return true;
+    }
+};
+doc.fromHTML(elementHTML, 15, 15, {
+    'width': 170,
+    'elementHandlers': specialElementHandlers
 });
-    var elementHTML = $('#content').html();
-    doc.save('teste.pdf');
-    console.log(doc);
+
+// Save the PDF
+doc.save('sample-document.pdf');
   </script>
 </body>
 

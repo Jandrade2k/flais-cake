@@ -16,6 +16,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $updated_at
  * @property string $measures
  * @property string $total
+ * @property int|null $category
  */
 class Ingredient extends Entity
 {
@@ -36,5 +37,6 @@ class Ingredient extends Entity
         'updated_at' => true,
         'measures' => true,
         'total' => true,
+        'category' => true,
     ];
 }

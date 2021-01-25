@@ -84,8 +84,8 @@ class EventsFixture extends TestFixture
                 'qtd_bar' => 1,
                 'customer_id' => 1,
                 'status' => 1,
-                'created_at' => '2020-12-07 16:21:12',
-                'updated_at' => '2020-12-07 16:21:12',
+                'created_at' => '2021-01-22 18:02:18',
+                'updated_at' => '2021-01-22 18:02:18',
                 'drinks_guests' => 1,
             ],
         ];

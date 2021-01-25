@@ -90,7 +90,8 @@ to get the desired effect
     <script>
         $('.input-daterange').datepicker({
             format: 'dd/mm/yyyy',
-            startDate: '-1d'
+            todayBtn: 'linked',
+            autoclose: true
         });
     </script>
 
