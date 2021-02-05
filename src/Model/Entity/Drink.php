@@ -9,15 +9,17 @@ use Cake\ORM\Entity;
  * Drink Entity
  *
  * @property int $id
- * @property string $name
- * @property int $tipo_id
+ * @property string|null $name
+ * @property int|null $tipo_id
  * @property string|null $image
- * @property int $status
- * @property \Cake\I18n\FrozenTime $created_at
- * @property \Cake\I18n\FrozenTime $updated_at
+ * @property int|null $status
+ * @property \Cake\I18n\FrozenTime|null $created_at
+ * @property \Cake\I18n\FrozenTime|null $updated_at
  * @property string|null $link
+ * @property int $category_id
  *
  * @property \App\Model\Entity\EventsTipo $events_tipo
+ * @property \App\Model\Entity\Category $category
  * @property \App\Model\Entity\Recipe[] $recipes
  */
 class Drink extends Entity
@@ -39,7 +41,9 @@ class Drink extends Entity
         'created_at' => true,
         'updated_at' => true,
         'link' => true,
+        'category_id' => true,
         'events_tipo' => true,
+        'category' => true,
         'recipes' => true,
     ];
 }

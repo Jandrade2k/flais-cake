@@ -75,8 +75,7 @@ class CustomersTable extends Table
         $validator
             ->scalar('contact')
             ->maxLength('contact', 255)
-            ->requirePresence('contact', 'create')
-            ->notEmptyString('contact');
+            ->allowEmptyString('contact');
 
         $validator
             ->scalar('cep')
@@ -129,6 +128,12 @@ class CustomersTable extends Table
         $validator
             ->dateTime('updated_at')
             ->allowEmptyDateTime('updated_at');
+
+        $validator
+            ->scalar('cpf')
+            ->maxLength('cpf', 14)
+            ->requirePresence('cpf', 'create')
+            ->notEmptyString('cpf');
 
         return $validator;
     }

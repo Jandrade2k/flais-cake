@@ -101,6 +101,24 @@ class EventsController extends AppController
 
     public function add()
     {
+
+        $this->loadModel('Drinks');
+        $drink = $this->Drinks->find()
+        ->where(['status' => 1])
+        ->toArray();
+
+        $this->loadModel('Units');
+        $unit = $this->Units->find()
+        ->where(['status' => 1])
+        ->toArray();
+
+        $this->loadModel('Castings');
+        $casts = $this->Castings->find()
+        ->where(['status' => 1])
+        ->toArray();
+
+        // dd($unit);
+
         $this->loadModel('Ingredients');
         $vodka = $this->Ingredients
         ->find()
@@ -134,7 +152,7 @@ class EventsController extends AppController
 
         $this->loadModel('EventsTipos');
         $tipo_eventos = $this->EventsTipos
-            ->find('all')
+            ->find()
             ->where(['status' => 1])
             ->toArray();
 
@@ -160,8 +178,13 @@ class EventsController extends AppController
             $event->created_at = date('Y-m-d H:i:s');
             $event->updated_at = date('Y-m-d H:i:s');
 
+            $event->unit_id = 1;
+
+            // dd($event);
 
             $rs = $eventTable->save($event);
+
+            
 
             if ($rs) {
                 $this->Flash->success('Evento salvo com sucesso.');
@@ -171,7 +194,7 @@ class EventsController extends AppController
                 return $this->redirect(['action' => 'add']);
             }
         }
-        $this->set(compact('tipo_eventos', 'tipo_proposal', 'customer', 'vodka', 'whisky', 'gin', 'aperol', 'vinho', 'espumante'));
+        $this->set(compact('tipo_eventos', 'tipo_proposal', 'customer', 'vodka', 'whisky', 'gin', 'aperol', 'vinho', 'espumante', 'unit', 'drink', 'casts'));
     }
 
     public function view($id = null)
@@ -179,6 +202,10 @@ class EventsController extends AppController
         if ($id == null) {
             $this->redirect(['action' => 'index']);
         }
+        $this->loadModel('Units');
+        $unit = $this->Units->find()
+        ->where(['status' => 1])
+        ->toArray();
 
         $this->loadModel('Ingredients');
         $vodka = $this->Ingredients
@@ -240,7 +267,7 @@ class EventsController extends AppController
             $this->Flash->error('Evento não existe.');
             return $this->redirect(['action' => 'index']);
         }
-        $this->set(compact('event', 'tipo_eventos', 'tipo_proposal', 'customer', 'vodka', 'whisky', 'gin', 'aperol', 'vinho', 'espumante'));
+        $this->set(compact('event', 'tipo_eventos', 'tipo_proposal', 'customer', 'vodka', 'whisky', 'gin', 'aperol', 'vinho', 'espumante', 'unit'));
     }
 
     public function edit($id = null)
@@ -248,6 +275,11 @@ class EventsController extends AppController
         if ($id == null) {
             $this->redirect(['action' => 'index']);
         }
+
+        $this->loadModel('Units');
+        $unit = $this->Units->find()
+        ->where(['status' => 1])
+        ->toArray();
 
         $this->loadModel('Ingredients');
         $vodka = $this->Ingredients
@@ -331,7 +363,7 @@ class EventsController extends AppController
 
             $event->updated_at = date('Y-m-d H:i:s');
 
-            // dd($event);
+            dd($event);
 
             if ($this->Events->save($event)) {
                 $this->Flash->success('Evento atualizado com sucesso.');
@@ -342,7 +374,7 @@ class EventsController extends AppController
             }
         }
 
-        $this->set(compact('event', 'tipo_eventos', 'customer', 'tipo_proposal', 'vodka', 'whisky', 'gin', 'aperol', 'vinho', 'espumante'));
+        $this->set(compact('event', 'tipo_eventos', 'customer', 'tipo_proposal', 'vodka', 'whisky', 'gin', 'aperol', 'vinho', 'espumante', 'unit'));
     }
 
     public function delete($id = null)

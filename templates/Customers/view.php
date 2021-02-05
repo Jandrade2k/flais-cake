@@ -7,21 +7,21 @@
     <form role="form">
         <div class="card-body">
             <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
-                <div class="form-group" style="margin: 0 5px; width:25%">
+                <div class="form-group" style="margin: 0 5px; width:20%">
                     <label for="exampleInputName1">Nome</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome" value="<?= $customer->name ?>" disabled>
                 </div>
-                <div class="form-group" style="margin: 0 5px; width:25%">
+                <div class="form-group" style="margin: 0 5px; width:20%">
                     <label for="exampleInputEmail1">E-mail</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail" value="<?= $customer->email; ?>" disabled>
                 </div>
-                <div class="form-group" style="margin: 0 5px; width:25%">
+                <div class="form-group" style="margin: 0 5px; width:20%">
+                <label for="exampleInputEmail1">CPF</label>
+                <input name="cpf" type="text" class="form-control cpf" id="exampleInputEmail1" placeholder="CPF" value="<?= $customer->cpf; ?>" disabled>
+            </div>
+                <div class="form-group" style="margin: 0 5px; width:20%">
                     <label for="exampleInputEmail1">Telefone</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Telefone" value="<?= $customer->phone ?>" disabled>
-                </div>
-                <div class="form-group" style="margin: 0 5px; width:25%">
-                    <label for="exampleInputEmail1">Contato</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Contato" value="<?= $customer->contact ?>" disabled>
                 </div>
             </div>
 

@@ -20,6 +20,15 @@
             </select>
         </div>
         <div class="form-group">
+            <label>Tipo de evento</label>
+            <select name="tipo_id" class="form-control" required>
+                <option selected disabled>Selecione uma categoria</option>
+                <?php foreach ($cat as $el) { ?>
+                    <option <?= $el->id == $drinks->tipo_id ? 'selected' : '' ?> value="<?= $el->id ?>"><?= ucfirst($el->nome) ?></option>
+                <?php } ?>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="exampleInputFile">Imagem</label>
             <div class="input-group">
                 <div class="custom-file">
@@ -47,7 +56,7 @@
                     ?>
                             <div class="ingrediente" style="display:flex; flex-direction:row; justify-content:center; align-items:center; margin:5px;">
                                 <select name="ingredient[id][]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">
-                                    <option selected disabled>Selecione um ingrediente</option>
+                                    <option selected disabled>Selecione um insumo</option>
                                     <?php foreach ($ing as $el) { ?>
                                         <option <?= $se->id == $el->id ? 'selected' : '' ?> value="<?= $el->id ?>"><?= $el->name ?></option>
                                     <?php } ?>

@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * Drinks Model
  *
  * @property \App\Model\Table\EventsTiposTable&\Cake\ORM\Association\BelongsTo $EventsTipos
+ * @property \App\Model\Table\CategoriesTable&\Cake\ORM\Association\BelongsTo $Categories
  * @property \App\Model\Table\RecipesTable&\Cake\ORM\Association\HasMany $Recipes
  *
  * @method \App\Model\Entity\Drink newEmptyEntity()
@@ -46,6 +47,9 @@ class DrinksTable extends Table
 
         $this->belongsTo('EventsTipos', [
             'foreignKey' => 'tipo_id',
+        ]);
+        $this->belongsTo('Categories', [
+            'foreignKey' => 'category_id',
             'joinType' => 'INNER',
         ]);
         $this->hasMany('Recipes', [
@@ -68,8 +72,7 @@ class DrinksTable extends Table
         $validator
             ->scalar('name')
             ->maxLength('name', 255)
-            ->requirePresence('name', 'create')
-            ->notEmptyString('name');
+            ->allowEmptyString('name');
 
         $validator
             ->scalar('image')
@@ -78,18 +81,15 @@ class DrinksTable extends Table
 
         $validator
             ->integer('status')
-            ->requirePresence('status', 'create')
-            ->notEmptyString('status');
+            ->allowEmptyString('status');
 
         $validator
             ->dateTime('created_at')
-            ->requirePresence('created_at', 'create')
-            ->notEmptyDateTime('created_at');
+            ->allowEmptyDateTime('created_at');
 
         $validator
             ->dateTime('updated_at')
-            ->requirePresence('updated_at', 'create')
-            ->notEmptyDateTime('updated_at');
+            ->allowEmptyDateTime('updated_at');
 
         $validator
             ->scalar('link')
@@ -109,6 +109,7 @@ class DrinksTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['tipo_id'], 'EventsTipos'), ['errorField' => 'tipo_id']);
+        $rules->add($rules->existsIn(['category_id'], 'Categories'), ['errorField' => 'category_id']);
 
         return $rules;
     }

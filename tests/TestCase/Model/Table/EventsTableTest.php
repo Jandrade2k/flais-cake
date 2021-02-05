@@ -34,6 +34,13 @@ class EventsTableTest extends TestCase
         'app.Aperols',
         'app.Vinhos',
         'app.Espumantes',
+        'app.Units',
+        'app.Tonicas',
+        'app.Aguas',
+        'app.Cocos',
+        'app.Saques',
+        'app.Runs',
+        'app.Cachacas',
     ];
 
     /**

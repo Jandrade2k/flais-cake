@@ -13,7 +13,7 @@
             ?>
                     <div class="ingrediente" style="display:flex; flex-direction:row; justify-content:center; align-items:center; margin:5px;">
                         <select name="ingredient[id][]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">
-                            <option selected disabled>Selecione um ingrediente</option>
+                            <option selected disabled>Selecione um insumo</option>
                             <?php foreach ($ing as $el) { ?>
                                 <option <?= $se->id == $el->id ? 'selected' : '' ?> value="<?= $el->id ?>"><?= $el->name ?></option>
                             <?php } ?>

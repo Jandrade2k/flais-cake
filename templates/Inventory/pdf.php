@@ -1,427 +1,169 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* -------------------------------------
-                  GLOBAL RESETS
-              ------------------------------------- */
-
-    /*All the styling goes here*/
-
-    img {
-      border: none;
-      -ms-interpolation-mode: bicubic;
-    }
-
-    body {
-      background-color: #f6f6f6;
-      font-family: sans-serif;
-      -webkit-font-smoothing: antialiased;
-      font-size: 14px;
-      line-height: 1.4;
-      margin: 0;
-      padding: 0;
-      -ms-text-size-adjust: 100%;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    table {
-      border-collapse: separate;
-      mso-table-lspace: 0pt;
-      mso-table-rspace: 0pt;
-      width: 100%;
-    }
-
-    table td {
-      font-family: sans-serif;
-      font-size: 14px;
-      vertical-align: top;
-    }
-
-    /* -------------------------------------
-                  BODY & CONTAINER
-              ------------------------------------- */
-
-    .body {
-      background-color: #f6f6f6;
-      width: 100%;
-    }
-
-    /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
-    .container {
-      display: block;
-      margin: 0 auto !important;
-      /* makes it centered */
-      max-width: 600px;
-      padding: 10px;
-      width: 600px;
-    }
-
-    /* This should also be a block element, so that it will fill 100% of the .container */
-    .content {
-      box-sizing: border-box;
-      display: block;
-      margin: 0 auto;
-      max-width: 600px;
-      padding: 10px;
-    }
-
-    /* -------------------------------------
-                  HEADER, FOOTER, MAIN
-              ------------------------------------- */
-    .main {
-      background: #ffffff;
-      border-radius: 3px;
-      width: 100%;
-    }
-
-    .wrapper {
-      box-sizing: border-box;
-      padding: 20px;
-    }
-
-    .content-block {
-      padding-bottom: 10px;
-      padding-top: 10px;
-    }
-
-    .footer {
-      clear: both;
-      margin-top: 10px;
-      text-align: center;
-      width: 100%;
-    }
-
-    .footer td,
-    .footer p,
-    .footer span,
-    .footer a {
-      color: #999999;
-      font-size: 12px;
-      text-align: center;
-    }
-
-    /* -------------------------------------
-                  TYPOGRAPHY
-              ------------------------------------- */
-    h1 {
-      font-family: sans-serif;
-      text-transform: capitalize;
-    }
-
-    h2,
-    h3,
-    h4 {
-      color: #000000;
-      font-family: sans-serif;
-      font-weight: 400;
-      line-height: 1.4;
-      margin: 0;
-      margin-bottom: 30px;
-    }
-
-    h1 {
-      font-size: 35px;
-      font-weight: 300;
-      text-align: center;
-      text-transform: capitalize;
-    }
-
-    p,
-    ul,
-    ol {
-      font-family: sans-serif;
-      font-size: 14px;
-      font-weight: normal;
-      margin: 0;
-      margin-bottom: 15px;
-    }
-
-    p li,
-    ul li,
-    ol li {
-      list-style-position: inside;
-      margin-left: 5px;
-    }
-
-    a {
-      color: #3498db;
-      text-decoration: underline;
-    }
-
-    /* -------------------------------------
-                  BUTTONS
-              ------------------------------------- */
-    .btn {
-      box-sizing: border-box;
-      width: 100%;
-    }
-
-    .btn>tbody>tr>td {
-      padding-bottom: 15px;
-    }
-
-    .btn table {
-      width: auto;
-    }
-
-    .btn table td {
-      background-color: #ffffff;
-      border-radius: 5px;
-      text-align: center;
-    }
-
-    .btn a {
-      background-color: #ffffff;
-      border: solid 1px #3498db;
-      border-radius: 5px;
-      box-sizing: border-box;
-      color: #3498db;
-      cursor: pointer;
-      display: inline-block;
-      font-size: 14px;
-      font-weight: bold;
-      margin: 0;
-      padding: 12px 25px;
-      text-decoration: none;
-      text-transform: capitalize;
-    }
-
-    .btn-primary table td {
-      /* background-color: #3498db;  */
-    }
-
-    .btn-primary a {
-      background-color: #3498db;
-      border-color: #3498db;
-      color: #ffffff;
-    }
-
-    /* -------------------------------------
-                  OTHER STYLES THAT MIGHT BE USEFUL
-              ------------------------------------- */
-    .last {
-      margin-bottom: 0;
-    }
-
-    .first {
-      margin-top: 0;
-    }
-
-    .align-center {
-      text-align: center;
-    }
-
-    .align-right {
-      text-align: right;
-    }
-
-    .align-left {
-      text-align: left;
-    }
-
-    .clear {
-      clear: both;
-    }
-
-    .mt0 {
-      margin-top: 0;
-    }
-
-    .mb0 {
-      margin-bottom: 0;
-    }
-
-    .preheader {
-      color: transparent;
-      display: none;
-      height: 0;
-      max-height: 0;
-      max-width: 0;
-      opacity: 0;
-      overflow: hidden;
-      mso-hide: all;
-      visibility: hidden;
-      width: 0;
-    }
-
-    .powered-by a {
-      text-decoration: none;
-    }
-
-    hr {
-      border: 0;
-      border-bottom: 1px solid #f6f6f6;
-      margin: 20px 0;
-    }
-
-    /* -------------------------------------
-                  RESPONSIVE AND MOBILE FRIENDLY STYLES
-              ------------------------------------- */
-    @media only screen and (max-width: 620px) {
-      table[class=body] h1 {
-        font-size: 28px !important;
-        margin-bottom: 10px !important;
-      }
-
-      table[class=body] p,
-      table[class=body] ul,
-      table[class=body] ol,
-      table[class=body] td,
-      table[class=body] span,
-      table[class=body] a {
-        font-size: 16px !important;
-      }
-
-      table[class=body] .wrapper,
-      table[class=body] .article {
-        padding: 10px !important;
-      }
-
-      table[class=body] .content {
-        padding: 0 !important;
-      }
-
-      table[class=body] .container {
-        padding: 0 !important;
-        width: 100% !important;
-      }
-
-      table[class=body] .main {
-        border-left-width: 0 !important;
-        border-radius: 0 !important;
-        border-right-width: 0 !important;
-      }
-
-      table[class=body] .btn table {
-        width: 100% !important;
-      }
-
-      table[class=body] .btn a {
-        width: 100% !important;
-      }
-
-      table[class=body] .img-responsive {
-        height: auto !important;
-        max-width: 100% !important;
-        width: auto !important;
-      }
-    }
-
-    /* -------------------------------------
-                  PRESERVE THESE STYLES IN THE HEAD
-              ------------------------------------- */
-    @media all {
-      .ExternalClass {
-        width: 100%;
-      }
-
-      .ExternalClass,
-      .ExternalClass p,
-      .ExternalClass span,
-      .ExternalClass font,
-      .ExternalClass td,
-      .ExternalClass div {
-        line-height: 100%;
-      }
-
-      .apple-link a {
-        color: inherit !important;
-        font-family: inherit !important;
-        font-size: inherit !important;
-        font-weight: inherit !important;
-        line-height: inherit !important;
-        text-decoration: none !important;
-      }
-
-      #MessageViewBody a {
-        color: inherit;
-        text-decoration: none;
-        font-size: inherit;
-        font-family: inherit;
-        font-weight: inherit;
-        line-height: inherit;
-      }
-
-      .btn-primary table td:hover {
-        /* background-color: #34495e !important;  */
-      }
-
-      .btn-primary a:hover {
-        background-color: #34495e !important;
-        border-color: #34495e !important;
-      }
-    }
-  </style>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
-  </script>
-  <title>PDF invantário</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>css/pdf.css">
+    <title>Inventário casamento ana & marcio</title>
 </head>
 
-<body id="content" class="content">
-  <documento>
-    <header>
-      <img src="http://localhost/flairs_cake/img/flairs%20logo.png">
-      <h3>Inventário</h3>
-    </header>
-    <main>
-      <div>
-        <h5>Informações do evento #<?= $events->id ?></h5>
-      </div>
+<body>
+    <div class="main">
+        <div class="titulo bloco grey negrito">
+            <span>INVENTÁRIO</span>
+        </div>
+        <div class="inventario">
+            <div class="logo ">
+                <img src="data:image/png;base64,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"
+                    alt="Logo">
+            </div>
+            <div class="equipe ">
+                <div class="bloco">
+                    <span class="grey duo upper negrito">coordenador</span>
+                    <span class="white negrito">1</span>
+                </div>
+                <div class="bloco">
+                    <span class="grey duo upper negrito">bartender</span>
+                    <span class="white negrito">3</span>
+                </div>
+                <div class="bloco">
+                    <span class="grey duo upper negrito">barback</span>
+                    <span class="white negrito">1</span>
+                </div>
+                <div class="bloco">
+                    <span class="grey duo upper negrito">copeira</span>
+                    <span class="white negrito">1</span>
+                </div>
+                <div class="bloco">
+                    <span class="grey duo upper negrito">recolha</span>
+                    <span class="white negrito">2</span>
+                </div>
+                <div class="bloco">
+                    <span class="grey duo upper negrito">estoquista</span>
+                    <span class="white negrito">0</span>
+                </div>
+            </div>
+            <div class="dados ">
+                <div class="id bloco grey upper negrito">
+                    <span>#02</span>
+                    <span>V.08/07/19</span>
+                </div>
+                <div class="white left">
+                    <span class="negrito cap campo">cliente: </span>
+                    <span class="upper">guilherme pires guimarães</span>
+                </div>
+                <div class="white left">
+                    <span class="negrito cap campo">data: </span>
+                    <span class="upper">29/01/2021</span>
+                </div>
+                <div class="white left">
+                    <span class="negrito cap campo">local: </span>
+                    <span class="upper">felix petrolli buffet</span>
+                </div>
+                <div class="white left">
+                    <span class="negrito cap campo">nº de conv: </span>
+                    <span class="upper">80</span>
+                </div>
+                <div class="white left">
+                    <span class="negrito cap campo">duração: </span>
+                    <span class="upper">9</span>
+                </div>
+                <div class="white left">
+                    <span class="negrito cap campo">enxoval: </span>
+                    <span class="upper"></span>
+                </div>
+                <div class="white left">
+                    <span class="negrito cap campo">coordenador: </span>
+                    <span class="upper"></span>
+                </div>
+            </div>
+        </div>
 
-      <p class="card-text">Data: <?= $events->event_date ?></p>
-      <p class="card-text">Nome do evento: <?= $events->name ?></p>
-      <p class="card-text">Número de convidados: <?= $events->qtd_guests ?></p>
-      <br>
-      <h5>Tabela de invantário</h5>
-      <table border="1" cellspacing="10" cellpadding="25">
-        <tr>
-          <th>Ingrediente</th>
-          <th>Quantidade de unidades</th>
-          <th>Quantidade SOS</th>
-        </tr>
-
-        <tr>
-          <td>Absolut Vodka</td>
-          <td>20</td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <td>Limão Siciliano</td>
-          <td>40</td>
-          <td>20</td>
-        </tr>
-        <tr>
-          <td>Sujo de Laranja</td>
-          <td>30</td>
-          <td>15</td>
-        </tr>
-      </table>
-
-    </main>
-  </documento>
-  <script src="<?= $this->request->getAttribute('webroot'); ?>plugins/jquery/jquery.min.js"></script>
-  <script src="<?= $this->request->getAttribute('webroot'); ?>js/jspdf.umd.min.js"></script>
-  <script>
-    var doc = new jspdf();
-var elementHTML = $('.content').html();
-var specialElementHandlers = {
-    '#elementH': function (element, renderer) {
-        return true;
-    }
-};
-doc.fromHTML(elementHTML, 15, 15, {
-    'width': 170,
-    'elementHandlers': specialElementHandlers
-});
-
-// Save the PDF
-doc.save('sample-document.pdf');
-  </script>
+        <div class="titulo bloco grey negrito">
+            <span>COQUETÉIS ESCOLHIDOS</span>
+        </div>
+        <div class="coqueteis">
+            <table>
+                <thead>
+                    <th class="upper negrito">vodka</th>
+                    <th class="upper negrito">qt</th>
+                    <th class="upper negrito">gin</th>
+                    <th class="upper negrito">qt</th>
+                    <th class="upper negrito">espumante</th>
+                    <th class="upper negrito">qt</th>
+                    <th class="upper negrito">whisky</th>
+                    <th class="upper negrito">qt</th>
+                    <th class="upper negrito">sem alcool</th>
+                    <th class="upper negrito">qt</th>
+                    <th class="upper negrito">outros</th>
+                    <th class="upper negrito">qt</th>
+                    <th class="upper negrito">volantes</th>
+                    <th class="upper negrito">qt</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="upper">moscow mule</td>
+                        <td>0</td>
+                        <td class="upper">gt tradicional</td>
+                        <td>27</td>
+                        <td class="upper">aquarela</td>
+                        <td>98</td>
+                        <td class="upper">popcorn smoke</td>
+                        <td>0</td>
+                        <td class="upper">mm</td>
+                        <td>0</td>
+                        <td class="upper">mojito</td>
+                        <td>0</td>
+                        <td class="upper">ciroc red berry</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td class="upper">aperol sour</td>
+                        <td>0</td>
+                        <td class="upper">gt tradicional</td>
+                        <td>27</td>
+                        <td class="upper">aquarela</td>
+                        <td>98</td>
+                        <td class="upper">popcorn smoke</td>
+                        <td>0</td>
+                        <td class="upper">mm</td>
+                        <td>0</td>
+                        <td class="upper">mojito</td>
+                        <td>0</td>
+                        <td class="upper">ciroc red berry</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td class="upper">citron</td>
+                        <td>0</td>
+                        <td class="upper">gt mandarin</td>
+                        <td>27</td>
+                        <td class="upper">spritz</td>
+                        <td>0</td>
+                        <td class="upper">old fashioned</td>
+                        <td>0</td>
+                        <td class="upper">coconut</td>
+                        <td>0</td>
+                        <td class="upper">mexican mule</td>
+                        <td>0</td>
+                        <td class="upper">tequila</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+        <div class="copos"></div>
+        <div class="bebidas"></div>
+        <div class="diversos"></div>
+        <div class="guarnicoes"></div>
+        <div class="infusoes"></div>
+        <div class="frutas"></div>
+        <div class="trabalho"></div>
+        <div class="apoio"></div>
+        <div class="molecular"></div>
+        <div class="ferramentas"></div>
+    </div>
 </body>
 
 </html>

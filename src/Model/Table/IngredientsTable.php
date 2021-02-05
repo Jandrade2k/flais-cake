@@ -97,10 +97,6 @@ class IngredientsTable extends Table
             ->allowEmptyString('category');
 
         $validator
-            ->integer('Coluna 10')
-            ->allowEmptyString('Coluna 10');
-
-        $validator
             ->numeric('price')
             ->notEmptyString('price');
 

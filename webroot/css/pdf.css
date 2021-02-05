@@ -1,0 +1,132 @@
+/* * {
+    margin: 15px;
+} */
+
+.debug {
+    border: 1px solid red;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+.main .inventario {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0
+}
+
+.main .inventario .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.main .inventario .equipe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.main .inventario .dados {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.main .inventario .dados div {
+    margin: 5px 0;
+}
+
+.main .inventario .dados .id {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.main .inventario .dados .left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.main .inventario .dados .left span {
+    width: 80%;
+}
+
+.main .inventario .dados .id span {
+    margin: 2px;
+}
+
+.main .coqueteis {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.main .coqueteis table, .main .coqueteis th, .main .coqueteis td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.main .coqueteis th, .main .coqueteis td {
+    padding: 15px;
+    text-align: left;
+}
+
+.campo {
+    width: 1000px;
+}
+
+.bloco {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: center;
+    padding: 0;
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+.cap {
+    text-transform: capitalize;
+}
+
+.grey {
+    border: 1px solid black;
+    background-color: #cdcdcd;
+    margin: 0;
+    /* padding: 3px; */
+    width: 100%;
+    min-width: 150px;
+    text-align: center;
+}
+
+.negrito {
+    font-weight: bold;
+}
+
+.duo {
+    border-right-width: 0;
+}
+
+.white {
+    border: 1px solid black;
+    background-color: #ffffff;
+    margin:0;
+    /* padding: 3px; */
+    width: 100%;
+    min-width: 100px;
+    text-align: center;
+}

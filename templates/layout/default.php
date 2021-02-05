@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>plugins/datepicker/css/bootstrap-datepicker.standalone.css">
     <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>css/global.css">
+    <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>css/pdf.css">
+    <link rel="stylesheet" href="<?= $this->request->getAttribute('webroot'); ?>plugins/bs-stepper/dist/css/bs-stepper.min.css">
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -80,12 +82,29 @@ to get the desired effect
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/demo.js"></script>
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/pages/dashboard3.js"></script>
     <script src="<?= $this->request->getAttribute('webroot'); ?>dist/js/jquery.mask.js"></script>
+    <script src="<?= $this->request->getAttribute('webroot'); ?>plugins/bs-stepper/dist/js/bs-stepper.min.js"></script>
     <!-- DataTables -->
     <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <script src="..<?= $this->request->getAttribute('webroot'); ?>plugins/datepicker/js/bootstrap-datepicker.js"></script>
+
+    <script>
+        $('document').ready(function() {
+            var stepper = new Stepper($('.bs-stepper')[0], {
+                linar: true,
+                animation: true,
+            })
+            $('.ant').click(function(e) {
+                stepper.previous()
+            })
+
+            $('.prox').click(function(e) {
+                stepper.next()
+            })
+        })
+    </script>
 
     <script>
         $('.input-daterange').datepicker({
@@ -132,6 +151,38 @@ to get the desired effect
         </script>
     <?php } ?>
 
+    <?php if (($this->request->getParam('controller') == 'Events' && $this->request->getParam('action') == 'add') || $this->request->getParam('controller') == 'Events' && $this->request->getParam('action') == 'edit') { ?>
+        <script>
+            $(document).ready(function() {
+                var max_fields = 200;
+                var x = -1;
+                $('.addCast').click(function(e) {
+                    e.preventDefault();
+                    if (x < max_fields) {
+                        $('#casting').append(`\
+                        <div class="casting" style="display:flex; flex-direction:row; justify-content:center; align-items:center; margin:5px;">\
+                                    <select name="casting_people[]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">\
+                                        <option selected disabled>Selecione um funcionário</option>\
+                                        <?php foreach ($cast as $el) { ?>\
+                                            <option value="<?= $el->id ?>"><?= $el->name ?></option>\
+                                        <?php } ?>\
+                                    </select>\
+                                    <a id="firstCast" type="button" class=" btn removeCast" style="margin:5px;"><i class="fas fa-minus-circle" style="width:20px; height:20px;"></i></a>\
+                                </div>\
+                `)
+                        x++;
+                    }
+                    $('.removeCast').on('click', function(e) {
+                        e.preventDefault();
+                        var linha = $(this.parentNode);
+                        linha.remove();
+                        x--;
+                    })
+                })
+            })
+        </script>
+    <?php } ?>
+
 
     <?php if (($this->request->getParam('controller') == 'Drinks' && $this->request->getParam('action') == 'add') || $this->request->getParam('controller') == 'Drinks' && $this->request->getParam('action') == 'edit') { ?>
         <script>
@@ -144,7 +195,7 @@ to get the desired effect
                             $('#ingred').append(`\
                 <div class="ingrediente" style="display:flex; flex-direction:row; justify-content:center; align-items:center; margin:5px;">\
                 <select name="ingredient[id][]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">\
-                <option selected disabled>Selecione um ingrediente</option>\
+                <option selected disabled>Selecione um insumo</option>\
                     <?php foreach ($ing as $el) { ?>\
                         <option value="<?= $el->id ?>"><?= $el->name ?></option>\
                     <?php } ?>\
@@ -209,6 +260,7 @@ to get the desired effect
         });
         $('[data-toggle="tooltip"]').tooltip()
         $('.select2').select2();
+        $('.cpf').mask('000.000.000-00')
         $('.form_date').mask('00/00/00');
         $('.din').mask('000.000.000.000.000,00', {
             reverse: true

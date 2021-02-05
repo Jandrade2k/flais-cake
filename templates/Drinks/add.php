@@ -20,6 +20,15 @@
             </select>
         </div>
         <div class="form-group">
+            <label>Categoria do evento</label>
+            <select name="category_id" class="form-control" required>
+                <option selected disabled>Selecione uma categoria</option>
+                <?php foreach ($cat as $t) { ?>
+                    <option value="<?= $t->id ?>"><?= ucfirst($t->nome) ?></option>
+                <?php } ?>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="exampleInputFile">Imagem</label>
             <div class="input-group">
                 <div class="custom-file">
@@ -39,9 +48,9 @@
                 <tr>
                     <div class="ingrediente" style="display:flex; flex-direction:row; justify-content:center; align-items:center; margin:5px;">
                         <select name="ingredient[id][]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">
-                            <option selected disabled>Selecione um ingrediente</option>
+                            <option selected disabled>Selecione um insumo</option>
                             <?php foreach ($ing as $el) { ?>
-                                <option <?= $se->id == $el->id ? 'selected' : '' ?> value="<?= $el->id ?>"><?= $el->name ?></option>
+                                <option value="<?= $el->id ?>"><?= $el->name ?></option>
                             <?php } ?>
                         </select>
                         <input name="ingredient[qtd][]" class="form-control" type="number" placeholder="quantidade" style="width:10%; margin:5px;">
@@ -60,7 +69,7 @@
                         <select name="guarrinson[id][]" class="form-control select2 " style="width: 70%;" tabindex="-1" aria-hidden="true">
                             <option selected disabled>Selecione um guarnição</option>
                             <?php foreach ($gua as $el) { ?>
-                                <option <?= $val->id == $el->id ? 'selected' : '' ?> value="<?= $el->id ?>"><?= $el->name ?></option>
+                                <option value="<?= $el->id ?>"><?= $el->name ?></option>
                             <?php } ?>
                         </select>
                         <input name="guarrinson[qtd][]" class="form-control" type="number" placeholder="quantidade" style="width:10%; margin:5px;">
@@ -78,7 +87,7 @@
 
                 <?php
                 foreach ($cup as $el) { ?>
-                    <option <?= $el->id == $recipe->cup ? 'selected' : ''; ?> value="<?= $el->id ?>"><?= $el->name ?></option>
+                    <option value="<?= $el->id ?>"><?= $el->name ?></option>
                 <?php } ?>
             </select>
         </div>

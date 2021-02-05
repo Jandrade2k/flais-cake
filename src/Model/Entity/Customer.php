@@ -11,7 +11,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $name
  * @property string $phone
- * @property string $contact
+ * @property string|null $contact
  * @property string $cep
  * @property string $place
  * @property string $number
@@ -22,6 +22,7 @@ use Cake\ORM\Entity;
  * @property int|null $status
  * @property \Cake\I18n\FrozenTime|null $created_at
  * @property \Cake\I18n\FrozenTime|null $updated_at
+ * @property string $cpf
  *
  * @property \App\Model\Entity\Event[] $events
  */
@@ -50,6 +51,7 @@ class Customer extends Entity
         'status' => true,
         'created_at' => true,
         'updated_at' => true,
+        'cpf' => true,
         'events' => true,
     ];
 }

@@ -12,8 +12,9 @@
             <thead>
                 <tr>
                     <th style="width:20%">Nome</th>
-                    <th style="width:30%;">Endereço</th>
+                    <th style="width:20%">Fone</th>
                     <th style="width:20%;">E-mail</th>
+                    <th style="width:30%;">Endereço</th>
                     <th style="width:20%;"> </th>
                 </tr>
             </thead>
@@ -23,11 +24,12 @@
                 ?>
                     <tr>
                         <td><?= mb_strtoupper($el->name) ?></td>
-                        <td><small><?= mb_strtoupper($el->place); ?> , <?= mb_strtoupper($el->city) ?> - <?= mb_strtoupper($el->uf) ?></small></td>
+                        <td><?= $el->phone ?></td>
                         <td><a href="mailto:<?= $el->email ?>">
                                 <?= $el->email ?>
                             </a>
                         </td>
+                        <td><small><?= mb_strtoupper($el->place) . '  ' . $el->number; ?> , <?= mb_strtoupper($el->city) ?> - <?= mb_strtoupper($el->uf) ?></small></td>
                         <td>
                             <div class="btn-group">
                                 <a href="<?= $this->Url->build(['controller' => 'customers', 'action' => 'view', $el->id]); ?>" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Visualizar"><i class="fas fa-eye"></i></a>

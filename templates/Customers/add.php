@@ -10,21 +10,21 @@
     <?= $this->Form->create(null, ['role' => 'form', 'id' => 'troxa']); ?>
     <div class="card-body">
         <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
-            <div class="form-group" style="margin: 0 5px; width:25%">
+            <div class="form-group" style="margin: 0 5px; width:20%">
                 <label for="exampleInputName1">Nome</label>
                 <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome">
             </div>
-            <div class="form-group" style="margin: 0 5px; width:25%">
+            <div class="form-group" style="margin: 0 5px; width:20%">
                 <label for="exampleInputEmail1">E-mail</label>
                 <input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail">
             </div>
-            <div class="form-group" style="margin: 0 5px; width:25%">
+            <div class="form-group" style="margin: 0 5px; width:20%">
+                <label for="exampleInputEmail1">CPF</label>
+                <input name="cpf" type="text" class="form-control cpf" id="exampleInputEmail1" placeholder="CPF">
+            </div>
+            <div class="form-group" style="margin: 0 5px; width:20%">
                 <label for="exampleInputEmail1">Telefone</label>
                 <input name="phone" type="text" class="form-control" id="exampleInputEmail1" placeholder="Telefone" data-mask="(00) 00000-0000" data-mask-selectonfocus="true">
-            </div>
-            <div class="form-group" style="margin: 0 5px; width:25%">
-                <label for="exampleInputEmail1">Contato</label>
-                <input name="contact" type="text" class="form-control" id="exampleInputEmail1" placeholder="Contato">
             </div>
         </div>
 

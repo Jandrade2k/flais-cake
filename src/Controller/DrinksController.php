@@ -35,6 +35,9 @@ class DrinksController extends AppController
 
     public function add()
     {
+        $this->loadModel('Categories');
+        $cat = $this->Categories->find('all');
+
         $this->loadModel('EventsTipos');
         $tipo = $this->EventsTipos->find()
             ->where(['status' => 1])
@@ -58,9 +61,8 @@ class DrinksController extends AppController
 
         if ($this->request->is('post')) {
             $drinkTable = TableRegistry::getTableLocator()->get('Drinks');
-            $drinks = $drinkTable->newEntity(
-                $this->request->getData()
-            );
+            
+            $drinks = $drinkTable->newEntity($this->request->getData());
 
             $drinks->status = 1;
             $drinks->created_at = date('Y-m-d H:i:s');
@@ -88,15 +90,16 @@ class DrinksController extends AppController
             }
 
             $drinks->name = $this->request->getData('drink-name');
-            $drinks->tipo_id = $this->request->getData('drink-tipo_id');
+            // $drinks->tipo_id = $this->request->getData('drink-tipo_id');
 
             $link = $this->request->getData('link');
 
             $embed = explode('v=', $link);
 
-            $drinks->link = $embed[1];
-
-            dd($drinks);
+            // $drinks->link = $embed[1];
+            
+            // dd($drinks);
+            // dd($this->request->getData());
 
             $ingredient = $this->request->getData('ingredient');
             $guarrinson = $this->request->getData('guarrinson');
@@ -110,11 +113,14 @@ class DrinksController extends AppController
             $recipe->garrison = json_encode($guarrinson['id']);
             $recipe->qtd_g = json_encode($guarrinson['qtd']);
 
+            $drinks->category_id = $this->request->getData('category_id');
+
             $recipe->status = 1;
             $recipe->created_at = date('Y-m-d H:i:s');
             $recipe->updated_at = date('Y-m-d H:i:s');
-
+            
             $save = $drinkTable->save($drinks);
+            // dd($drinks);
 
             $recipe->drink_id = $save->id;
 
@@ -127,7 +133,7 @@ class DrinksController extends AppController
             }
         }
         // TODO: Tratar imagem.
-        $this->set(compact('tipo', 'ing', 'gua', 'cup'));
+        $this->set(compact('tipo', 'ing', 'gua', 'cup', 'cat'));
     }
 
     public function view($id = null)
@@ -135,6 +141,9 @@ class DrinksController extends AppController
         if ($id == null) {
             $this->redirect(['action' => 'index']);
         }
+
+        $this->loadModel('Categories');
+        $cat = $this->Categories->find('all');
 
         $this->loadModel('Drinks');
 
@@ -167,7 +176,7 @@ class DrinksController extends AppController
             $this->Flash->error('Drink não existe.');
             return $this->redirect(['action' => 'index']);
         }
-        $this->set(compact('drinks', 'recipe', 'ingredients'));
+        $this->set(compact('drinks', 'recipe', 'ingredients', 'cat'));
     }
 
     public function edit($id = null)
@@ -175,6 +184,9 @@ class DrinksController extends AppController
         if ($id == null) {
             $this->redirect(['action' => 'index']);
         }
+
+        $this->loadModel('Categories');
+        $cat = $this->Categories->find('all');
 
         $this->loadmodel('Recipes');
         $recipe = $this->Recipes->find()
@@ -308,7 +320,7 @@ class DrinksController extends AppController
         }
 
 
-        $this->set(compact('drinks', 'tipo', 'recipe', 'cups', 'gua', 'ing'));
+        $this->set(compact('drinks', 'tipo', 'recipe', 'cups', 'gua', 'ing', 'cat'));
     }
 
     public function delete($id = null)

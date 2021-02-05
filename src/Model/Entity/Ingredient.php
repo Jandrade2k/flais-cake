@@ -17,7 +17,6 @@ use Cake\ORM\Entity;
  * @property string $measures
  * @property string $total
  * @property int|null $category
- * @property int|null $Coluna 10
  * @property float $price
  */
 class Ingredient extends Entity
@@ -40,7 +39,6 @@ class Ingredient extends Entity
         'measures' => true,
         'total' => true,
         'category' => true,
-        'Coluna 10' => true,
         'price' => true,
     ];
 }
