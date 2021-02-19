@@ -51,3 +51,7 @@ Other environment agnostic settings can be changed in `config/app.php`.
 The app skeleton uses [Milligram](https://milligram.io/) (v1.3) minimalist CSS
 framework by default. You can, however, replace it with any other library or
 custom styles.
+
+## Observação
+
+A aplicação construida aqui nesse projeto foi feita no intuido de ensinar o estágiario o básico de programação.
